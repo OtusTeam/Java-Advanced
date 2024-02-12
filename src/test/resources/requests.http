@@ -1,0 +1,6 @@
+GET localhost:8080/calculate
+Content-Type: text/plain
+
+Ping
+
+###############################################################
