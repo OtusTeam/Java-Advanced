@@ -1,7 +1,7 @@
-GET http://{{host}}:{{port}}/calculate
+GET http://{{host}}:{{port}}/hash
 Content-Type: text/plain
 
-Ping
+my-password
 
 ###############################################################
 
@@ -16,6 +16,10 @@ GET http://{{host}}:{{port}}/actuator/metrics
 ###############################################################
 
 
-GET http://{{host}}:{{port}}/actuator/metrics/calculate.time
+GET http://{{host}}:{{port}}/actuator/metrics/hash.time
+
+###############################################################
+
+GET http://{{host}}:{{port}}/actuator/metrics/http.server.requests
 
 ###############################################################
