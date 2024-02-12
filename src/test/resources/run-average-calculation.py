@@ -12,5 +12,5 @@ if __name__ == '__main__':
         count = json["measurements"][0]["value"]  # 0 -> COUNT
         total = json["measurements"][1]["value"]  # 1 -> TOTAL_TIME
 
-        print(f'{METRIC} avg (sec): {total / count}         = {total} / {count} = TOTAL_TIME / COUNT ')
+        print(f'{METRIC} avg (ms): {total / count / 1000.0}         = {total} / {count} = TOTAL_TIME / COUNT ')
         time.sleep(1)
