@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: calc_service
+
+server:
+  port: 8080
+  http2:
+    enabled: true
+  shutdown: graceful
+
+management:
+  metrics:
+    enable:
+      tomcat: true
+      jvm: true
+      process: true
+      hikaricp: true
+      system: true
+      jdbc: true
+      logback: true
+  endpoint:
+    loggers:
+      enabled: true
+    metrics:
+      enabled: true
+    health:
+      probes:
+        enabled: true # required for local spring boot tests only, in Kubernetes environment enabled by default
+      show-details: always # show detailed probe results to analyze application state
+      show-components: always # list all checks within each group: health, readiness, liveness
+      group:
+        readiness:
+          include: readinessState,diskSpace,db,port # external checks to indicate Kubernetes if application is ready for traffic
+        liveness:
+          include: livenessState,port # internal checks to indicate Kubernetes if application requires a reboot
+  export:
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,loggers

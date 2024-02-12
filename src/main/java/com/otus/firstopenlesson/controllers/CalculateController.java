@@ -1,5 +1,6 @@
 package com.otus.firstopenlesson.controllers;
 
+import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.Optional;
 public class CalculateController {
 
     @GetMapping("/calculate")
+    @Timed(value = "calculate.time", description = "Time taken to calculate of result")
     public ResponseEntity<String> calculate(RequestEntity<String> rq) {
         log.info("Income request: headers=" + rq.getHeaders() + ", body=" + rq.getBody());
 

@@ -1,6 +1,21 @@
-GET localhost:8080/calculate
+GET http://{{host}}:{{port}}/calculate
 Content-Type: text/plain
 
 Ping
+
+###############################################################
+
+
+GET http://{{host}}:{{port}}/actuator/prometheus
+
+###############################################################
+
+
+GET http://{{host}}:{{port}}/actuator/metrics
+
+###############################################################
+
+
+GET http://{{host}}:{{port}}/actuator/metrics/calculate.time
 
 ###############################################################
