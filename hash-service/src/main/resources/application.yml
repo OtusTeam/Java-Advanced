@@ -6,8 +6,8 @@ server:
   port: 8080
   tomcat:
     threads:
-      min-spare: 5
-      max: 10
+      min-spare: 2
+      max: 4
   shutdown: graceful
 
 management:

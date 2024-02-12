@@ -1,0 +1,57 @@
+Subject: [PATCH] NPE fix
+---
+Index: hash-service/src/main/java/com/otus/javaadvanced/config/Config.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java b/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java
+--- a/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java	
++++ b/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java	
+@@ -1,11 +1,14 @@
+ package com.otus.javaadvanced.config;
+ 
+ import com.otus.javaadvanced.services.EncodeService;
++import com.otus.javaadvanced.services.Encoder;
+ import io.micrometer.core.aop.TimedAspect;
+ import io.micrometer.core.instrument.MeterRegistry;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ 
++import java.util.Base64;
++
+ @Configuration
+ public class Config {
+ 
+@@ -15,7 +18,12 @@
+     }
+ 
+     @Bean
+-    public EncodeService encodeService() {
+-        return new EncodeService();
++    public EncodeService encodeService(Encoder encoder) {
++        return new EncodeService(encoder);
++    }
++
++    @Bean
++    public Encoder encoder() {
++        return (src) -> Base64.getEncoder().encode(src);
+     }
+ }
+Index: hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java b/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java
+--- a/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java	
++++ b/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java	
+@@ -8,7 +8,7 @@
+ @RequiredArgsConstructor
+ public class EncodeService {
+ 
+-    private Encoder encoder;
++    private final Encoder encoder;
+ 
+     // for emulation of large stacks
+     private static final int STACK_DEPTH = 0;
