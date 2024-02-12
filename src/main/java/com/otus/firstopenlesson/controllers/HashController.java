@@ -16,7 +16,6 @@ import java.util.Optional;
 @AllArgsConstructor
 public class HashController {
 
-
     private final MeterRegistry meterRegistry;
 
     private final HashService hashService;

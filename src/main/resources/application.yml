@@ -40,3 +40,8 @@ management:
     web:
       exposure:
         include: health,info,metrics,prometheus,loggers
+
+logging:
+  level:
+    root: info
+    com.otus.firstopenlesson.controllers: debug
