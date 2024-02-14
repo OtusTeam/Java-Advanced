@@ -22,7 +22,6 @@ public class HashController {
 
     @GetMapping("/hash")
     public ResponseEntity<String> hash(RequestEntity<String> rq) {
-        // todo попробуем тут увидеть меньше StringBuilder'ов
         log.debug("Income request: headers=" + rq.getHeaders() + ", body=" + rq.getBody());
 
         String result = null;
