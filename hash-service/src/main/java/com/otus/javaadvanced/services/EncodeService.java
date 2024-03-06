@@ -10,7 +10,8 @@ public class EncodeService {
 
     private Encoder encoder;
 
-    private static final int STACK_DEPTH = 100;
+    // for emulation of large stacks
+    private static final int STACK_DEPTH = 0;
 
     public byte[] encode(byte[] hash) {
         byte[] safe = Arrays.copyOf(hash, hash.length);
@@ -28,6 +29,9 @@ public class EncodeService {
             result = encoder.encode(hash);
 
         } catch (Exception e) {
+            long count = ExceptionUtils.countException(e);
+            ExceptionUtils.acceptCount(count);
+
             result = Base64.getEncoder().encode(hash);
         }
 
