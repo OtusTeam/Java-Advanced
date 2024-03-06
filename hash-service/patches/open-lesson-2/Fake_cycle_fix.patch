@@ -1,0 +1,39 @@
+Subject: [PATCH] Fake cycle fix
+---
+Index: hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java b/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java
+--- a/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java	
++++ b/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java	
+@@ -14,14 +14,7 @@
+     private static Lock lock = new ReentrantLock();
+ 
+     public static long countException(Exception e) {
+-        while (!lock.tryLock()) {
+-            try {
+-                TimeUnit.MILLISECONDS.sleep(300);
+-            } catch (InterruptedException ex) {
+-                throw new RuntimeException(ex);
+-            }
+-        }
+-
++        lock.lock();
+         try {
+             return ++exceptionCount;
+         } finally {
+@@ -30,11 +23,7 @@
+     }
+ 
+     public static void acceptCount(long count) {
+-        long index = 0;
+-        for (int i = 0; i < 1_000_000; i++) {
+-            // it's fake logic :)
+-            index = count % 100;
+-        }
++        long index = count % 100;
+ 
+         if (index == 0) {
+             log.info("Current exception count: {}", count);
