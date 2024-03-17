@@ -1,4 +1,4 @@
-package com.otus.firstopenlesson.services;
+package com.otus.javaadvanced.services;
 
 import org.springframework.stereotype.Service;
 

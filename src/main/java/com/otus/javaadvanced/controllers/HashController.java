@@ -1,6 +1,6 @@
-package com.otus.firstopenlesson.controllers;
+package com.otus.javaadvanced.controllers;
 
-import com.otus.firstopenlesson.services.HashService;
+import com.otus.javaadvanced.services.HashService;
 import io.micrometer.core.instrument.MeterRegistry;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

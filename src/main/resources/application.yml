@@ -46,4 +46,4 @@ management:
 logging:
   level:
     root: info
-    com.otus.firstopenlesson.controllers: debug
+    com.otus.javaadvanced.controllers: debug

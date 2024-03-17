@@ -1,4 +1,4 @@
-package com.otus.firstopenlesson.config;
+package com.otus.javaadvanced.config;
 
 import io.micrometer.core.aop.TimedAspect;
 import io.micrometer.core.instrument.MeterRegistry;
