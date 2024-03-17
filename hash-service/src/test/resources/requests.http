@@ -1,25 +1,18 @@
+### Call hash service
 GET http://{{host}}:{{port}}/hash
 Content-Type: text/plain
 
 my-password
 
-###############################################################
-
-
+### Get metrics from prometheus' endpoint
 GET http://{{host}}:{{port}}/actuator/prometheus
 
-###############################################################
-
-
+### Get metrics from actuator
 GET http://{{host}}:{{port}}/actuator/metrics
 
-###############################################################
-
-
+### Get hash time metric
 GET http://{{host}}:{{port}}/actuator/metrics/hash.time
 
-###############################################################
-
+### Get http.server.request metric
 GET http://{{host}}:{{port}}/actuator/metrics/http.server.requests
 
-###############################################################

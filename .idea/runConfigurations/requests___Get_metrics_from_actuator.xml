@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="requests | Get metrics from actuator" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" nameIsGenerated="true" path="$PROJECT_DIR$/hash-service/src/test/resources/requests.http" index="3" requestIdentifier="Get metrics from actuator" runType="Run single request">
+    <method v="2" />
+  </configuration>
+</component>
