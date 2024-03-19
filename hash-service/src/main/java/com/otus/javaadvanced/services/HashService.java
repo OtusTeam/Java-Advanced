@@ -1,5 +1,6 @@
 package com.otus.javaadvanced.services;
 
+import com.otus.javaadvanced.cache.Cachable;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +13,13 @@ import java.security.SecureRandom;
 @AllArgsConstructor
 public class HashService {
 
-    private static final int MAX_HASH_COUNT = 200;
+    private static final int MAX_HASH_COUNT = 1;
 
     private final EncodeService encodeService;
 
-    public String hash(String input) {
-        String result = input;
+    @Cachable
+    public String hash(String data) {
+        var result = data;
         for (int i = 0; i < MAX_HASH_COUNT; i++) {
             result = hashIteration(result);
         }
@@ -26,7 +28,7 @@ public class HashService {
     }
 
     // https://www.baeldung.com/java-password-hashing
-    public String hashIteration(String input) {
+    private String hashIteration(String input) {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
         random.nextBytes(salt);
