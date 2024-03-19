@@ -1,0 +1,19 @@
+Subject: [PATCH] OpenLesson 3: fix 2
+---
+Index: hash-service/src/main/java/com/otus/javaadvanced/cache/CacheAspect.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/hash-service/src/main/java/com/otus/javaadvanced/cache/CacheAspect.java b/hash-service/src/main/java/com/otus/javaadvanced/cache/CacheAspect.java
+--- a/hash-service/src/main/java/com/otus/javaadvanced/cache/CacheAspect.java	
++++ b/hash-service/src/main/java/com/otus/javaadvanced/cache/CacheAspect.java	
+@@ -84,6 +84,8 @@
+                 builder.concurrencyLevel(concurrencyLevel);
+             }
+ 
++            builder.weakKeys().weakValues();
++
+             return builder.removalListener(notification -> log
+                     .info("Cache has expired: key={}, value={}, cause={}",
+                           notification.getKey(),
