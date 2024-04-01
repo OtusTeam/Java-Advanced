@@ -16,6 +16,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("io.micrometer:micrometer-registry-prometheus")
+    implementation("org.apache.commons:commons-lang3")
+    implementation("com.google.guava:guava:33.0.0-jre")
+    implementation("org.jetbrains:annotations:24.0.0")
 
     implementation("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")

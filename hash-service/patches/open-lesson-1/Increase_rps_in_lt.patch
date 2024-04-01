@@ -1,0 +1,50 @@
+Subject: [PATCH] Increased rps
+---
+Index: hash-service/src/test/resources/One shot.jmx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/hash-service/src/test/resources/One shot.jmx b/hash-service/src/test/resources/One shot.jmx
+--- a/hash-service/src/test/resources/One shot.jmx	
++++ b/hash-service/src/test/resources/One shot.jmx	
+@@ -22,7 +22,7 @@
+         </elementProp>
+       </ThreadGroup>
+       <hashTree>
+-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="One test shot" enabled="true">
++        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="One test shot">
+           <stringProp name="HTTPSampler.domain">localhost</stringProp>
+           <stringProp name="HTTPSampler.port">8080</stringProp>
+           <stringProp name="HTTPSampler.protocol">http</stringProp>
+@@ -70,7 +70,7 @@
+           </elementProp>
+         </HTTPSamplerProxy>
+         <hashTree/>
+-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
++        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+           <boolProp name="ResultCollector.error_logging">false</boolProp>
+           <objProp>
+             <name>saveConfig</name>
+@@ -180,7 +180,7 @@
+       </hashTree>
+       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Simple Thread Group">
+         <stringProp name="TestPlan.comments">Approximately 90 rps</stringProp>
+-        <intProp name="ThreadGroup.num_threads">10</intProp>
++        <intProp name="ThreadGroup.num_threads">20</intProp>
+         <intProp name="ThreadGroup.ramp_time">10</intProp>
+         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+@@ -191,10 +191,10 @@
+       </ThreadGroup>
+       <hashTree>
+         <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+-          <stringProp name="ConstantTimer.delay">100</stringProp>
++          <stringProp name="ConstantTimer.delay">50</stringProp>
+         </ConstantTimer>
+         <hashTree/>
+-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
++        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+           <stringProp name="HTTPSampler.domain">localhost</stringProp>
+           <stringProp name="HTTPSampler.port">8080</stringProp>
+           <stringProp name="HTTPSampler.protocol">http</stringProp>

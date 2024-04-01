@@ -1,0 +1,90 @@
+Subject: [PATCH] OpenLesson 3: fix 1
+---
+Index: hash-service/src/main/java/com/otus/javaadvanced/cache/CacheAspect.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/hash-service/src/main/java/com/otus/javaadvanced/cache/CacheAspect.java b/hash-service/src/main/java/com/otus/javaadvanced/cache/CacheAspect.java
+--- a/hash-service/src/main/java/com/otus/javaadvanced/cache/CacheAspect.java	
++++ b/hash-service/src/main/java/com/otus/javaadvanced/cache/CacheAspect.java	
+@@ -6,7 +6,6 @@
+ import lombok.val;
+ import org.apache.commons.lang3.StringUtils;
+ import org.aspectj.lang.ProceedingJoinPoint;
+-import org.aspectj.lang.Signature;
+ import org.aspectj.lang.annotation.Around;
+ import org.aspectj.lang.annotation.Aspect;
+ import org.aspectj.lang.annotation.Pointcut;
+@@ -25,7 +24,7 @@
+ @Aspect
+ public class CacheAspect {
+ 
+-    private static final Map<Signature, Cache<Object, Object>> CACHE = new ConcurrentHashMap<>();
++    private static final Map<SignatureKey, Cache<Object, Object>> CACHE = new ConcurrentHashMap<>();
+ 
+     @Pointcut("@annotation(com.otus.javaadvanced.cache.Cachable)")
+     public void cachable() {
+@@ -59,7 +58,7 @@
+ 
+     @NotNull
+     private static Cache<Object, Object> getCache(@NotNull ProceedingJoinPoint point) {
+-        return CACHE.computeIfAbsent(point.getSignature(), key -> {
++        return CACHE.computeIfAbsent(new SignatureKey(point.getSignature()), key -> {
+             final Method method = AspectUtil.getMethod(point.getSignature(), point.getArgs());
+             final Cachable cachedResult = method.getAnnotation(Cachable.class);
+ 
+Index: hash-service/src/main/java/com/otus/javaadvanced/cache/SignatureKey.java
+===================================================================
+diff --git a/hash-service/src/main/java/com/otus/javaadvanced/cache/SignatureKey.java b/hash-service/src/main/java/com/otus/javaadvanced/cache/SignatureKey.java
+new file mode 100644
+--- /dev/null	
++++ b/hash-service/src/main/java/com/otus/javaadvanced/cache/SignatureKey.java	
+@@ -0,0 +1,47 @@
++package com.otus.javaadvanced.cache;
++
++import org.aspectj.lang.Signature;
++import org.jetbrains.annotations.NotNull;
++
++import java.util.Objects;
++
++public final class SignatureKey {
++    private final Signature signature;
++
++    public SignatureKey(@NotNull Signature signature) {
++        this.signature = signature;
++    }
++
++    @NotNull
++    public Signature getSignature() {
++        return signature;
++    }
++
++    @Override
++    public boolean equals(Object o) {
++        if (this == o) {
++            return true;
++        }
++        if (o == null || getClass() != o.getClass()) {
++            return false;
++        }
++
++        final SignatureKey that = (SignatureKey) o;
++        return Objects.equals(signature.getDeclaringTypeName(), that.signature.getDeclaringTypeName()) &&
++                Objects.equals(signature.getName(), that.signature.getName());
++    }
++
++    @Override
++    public int hashCode() {
++        int result = signature.getDeclaringTypeName().hashCode();
++        result = 31 * result + signature.getName().hashCode();
++        return result;
++    }
++
++    @Override
++    public String toString() {
++        return "SignatureKey{" +
++                "signature=" + signature.toShortString() +
++                '}';
++    }
++}

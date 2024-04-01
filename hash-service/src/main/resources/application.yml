@@ -1,13 +1,13 @@
 spring:
   application:
-    name: calc_service
+    name: hash_service
 
 server:
   port: 8080
   tomcat:
     threads:
-      min-spare: 5
-      max: 10
+      min-spare: 10
+      max: 200
   shutdown: graceful
 
 management:
