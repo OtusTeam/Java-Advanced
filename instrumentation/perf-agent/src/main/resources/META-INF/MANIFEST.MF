@@ -1,0 +1,4 @@
+Agent-Class: com.otus.java.advanced.instrumentation.agent.PerformanceAgent
+Premain-Class: com.otus.java.advanced.instrumentation.agent.PerformanceAgent
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true

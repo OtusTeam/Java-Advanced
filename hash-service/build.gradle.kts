@@ -4,13 +4,6 @@ plugins {
 }
 apply(plugin = "io.spring.dependency-management")
 
-group = "com.otus.java.advanced"
-version = "1.0.0-SNAPSHOT"
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-aop")

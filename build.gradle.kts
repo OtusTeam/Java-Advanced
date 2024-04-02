@@ -2,21 +2,18 @@ plugins {
     id("java")
 }
 
-group = "com.otus.java.advanced"
-version = "1.0.0-SNAPSHOT"
+val currentJavaVersion = JavaVersion.VERSION_21
 
-repositories {
-    mavenCentral()
+java {
+    sourceCompatibility = currentJavaVersion
+    targetCompatibility = currentJavaVersion
 }
 
-dependencies {
-    implementation("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
+allprojects {
+    group = "com.otus.java.advanced"
+    version = "1.0.0-SNAPSHOT"
 
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-}
-
-tasks.test {
-    useJUnitPlatform()
+    repositories {
+        mavenCentral()
+    }
 }
