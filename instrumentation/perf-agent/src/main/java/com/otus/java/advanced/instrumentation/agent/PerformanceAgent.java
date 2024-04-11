@@ -42,11 +42,10 @@ public class PerformanceAgent {
     }
 
     private static Method getMethod(Class<?> clazz, String methodName) {
-        Method method = Arrays.stream(clazz.getMethods())
+        return Arrays.stream(clazz.getMethods())
                 .filter(m -> m.getName().equals(methodName))
                 .findFirst()
                 .orElseThrow();
-        return method;
     }
 
     private static Class<?> getClass(String classAndMethodName, Instrumentation instrumentation) {

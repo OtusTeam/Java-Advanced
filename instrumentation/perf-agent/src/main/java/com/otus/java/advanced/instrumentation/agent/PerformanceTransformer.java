@@ -11,23 +11,22 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.instrument.ClassFileTransformer;
-import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
 
 public class PerformanceTransformer implements ClassFileTransformer {
 
     private static final Logger log = LoggerFactory.getLogger(PerformanceTransformer.class);
 
-    private final String targetClassName;
+    private final String instrumentedClassName;
 
-    private final String targetMethodName;
+    private final String instrumentedMethodName;
 
-    private final ClassLoader targetClassLoader;
+    private final ClassLoader classLoader;
 
-    public PerformanceTransformer(String targetClassName, String targetMethodName, ClassLoader targetClassLoader) {
-        this.targetClassName = targetClassName;
-        this.targetMethodName = targetMethodName;
-        this.targetClassLoader = targetClassLoader;
+    public PerformanceTransformer(String instrumentedClassName, String instrumentedMethodName, ClassLoader classLoader) {
+        this.instrumentedClassName = instrumentedClassName;
+        this.instrumentedMethodName = instrumentedMethodName;
+        this.classLoader = classLoader;
     }
 
     @Override
@@ -35,33 +34,35 @@ public class PerformanceTransformer implements ClassFileTransformer {
                             String className,
                             Class<?> classBeingRedefined,
                             ProtectionDomain protectionDomain,
-                            byte[] classFileBuffer) throws IllegalClassFormatException {
+                            byte[] classFileBuffer) {
 
-        byte[] byteCode = classFileBuffer;
+        var byteCode = classFileBuffer;
 
-        String finalTargetClassName = targetClassName.replaceAll("\\.", "/");
-        if (!className.equals(finalTargetClassName)) {
+        var name = instrumentedClassName.replaceAll("\\.", "/");
+        if (!className.equals(name)) {
             return byteCode;
         }
 
-        if (loader.equals(targetClassLoader)) {
-            log.info("Transforming the class: {}", className);
+        if (loader.equals(classLoader)) {
+            info("Transforming the class: " + className);
             try {
-                log.info("Original class's byte code: \n{}", getByteCodeAsString(targetClassName));
+                info("Original class's byte code: \n" + getByteCodeAsString(byteCode));
 
                 ClassPool cp = ClassPool.getDefault();
-                log.debug("Getting class {}", targetClassName);
-                CtClass cc = cp.get(targetClassName);
-                CtMethod m = cc.getDeclaredMethod(targetMethodName);
+                cp.appendClassPath(new LoaderClassPath(loader));
+
+                info("Getting class {}" + instrumentedClassName);
+                CtClass cc = cp.get(instrumentedClassName);
+                CtMethod m = cc.getDeclaredMethod(instrumentedMethodName);
                 m.addLocalVariable("startTime", CtClass.longType);
-                m.insertBefore("startTime = System.currentTimeMillis();");
+                m.insertBefore("startTime = System.nanoTime();");
 
                 m.addLocalVariable("endTime", CtClass.longType);
                 m.addLocalVariable("opTime", CtClass.longType);
                 m.insertAfter("""
-                                      endTime = System.currentTimeMillis();
+                                      endTime = System.nanoTime();
                                       opTime = (endTime-startTime)/1000;
-                                      log.info("[AGENT] Withdrawal operation completed in:" + opTime + " seconds!");
+                                      log.info("[AGENT] Withdrawal operation completed in: " + opTime + " microseconds!");
                                       """
                                       .strip());
 
@@ -69,36 +70,32 @@ public class PerformanceTransformer implements ClassFileTransformer {
                 cc.detach();
 
                 /* LESSON why is the old byte code here ? */
-                log.info("Instrumented class's byte code: \n{}", getByteCodeAsString(targetClassName)); //getByteCodeAsString(byteCode)
+                info("Instrumented class's byte code: \n{}" + getByteCodeAsString(instrumentedClassName));
+                /*info("Instrumented class's byte code: \n{}" + getByteCodeAsString(byteCode));*/
 
-                saveToFile(targetClassName, byteCode);
+                saveToFile(instrumentedClassName, byteCode);
 
-            } catch (NotFoundException | CannotCompileException | IOException | ClassNotFoundException e) {
-                log.error("Exception", e);
+            } catch (NotFoundException | CannotCompileException | IOException e) {
+                info("Exception: " + e);
             }
         }
         return byteCode;
     }
 
-    private static String getByteCodeAsString(String className)
-            throws IOException, ClassNotFoundException {
-
+    private static String getByteCodeAsString(String className) throws IOException {
         ClassReader reader = new ClassReader(className);
         return parseByteCode(reader);
     }
 
-    private static String getByteCodeAsString(byte[] classFileBuffer) {
-
+    private static String getByteCodeAsString(byte[] classFileBuffer) throws IOException {
         ClassReader reader = new ClassReader(classFileBuffer);
         return parseByteCode(reader);
     }
 
-    //todo may be replace this by javaassist's approach?
     private static String parseByteCode(ClassReader reader) {
         StringWriter sw = new StringWriter();
         TraceClassVisitor tcv = new TraceClassVisitor(new PrintWriter(sw));
         reader.accept(tcv, 0);
-
         return sw.toString();
     }
 
@@ -107,7 +104,12 @@ public class PerformanceTransformer implements ClassFileTransformer {
         String last = split[split.length - 1];
         try (FileOutputStream out = new FileOutputStream(last + ".class")) {
             out.write(newClassByteCode);
-            log.info("Transformed class saved to file: {}", last);
+            info("Transformed class saved to file: " + last);
         }
+    }
+
+    private static void info(String text) {
+        log.info(text);
+//        System.out.println(text);
     }
 }

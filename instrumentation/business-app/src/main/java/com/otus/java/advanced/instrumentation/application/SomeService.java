@@ -10,6 +10,8 @@ public class SomeService {
 
     public void process(int data) throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
+
+        /* LESSON Demo of 'Reload changed classes' idea's feature */
         log.info("Successful operation: {}", data);
     }
 }
