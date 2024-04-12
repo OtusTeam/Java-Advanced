@@ -41,7 +41,7 @@ public class LoggerBeanPostProcessor implements BeanPostProcessor {
         try {
             return byteBuddy
                     .subclass(targetClass)
-                    .name("com.otus.java.advanced.bytebuddy.ExampleServiceWithLogger")
+                    .name(targetClass.getCanonicalName() + "WithLogger")
                     .defineField(
                             "LOGGER",
                             org.slf4j.Logger.class,
