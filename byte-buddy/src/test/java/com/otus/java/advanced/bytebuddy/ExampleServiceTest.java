@@ -28,6 +28,6 @@ public class ExampleServiceTest {
 
     @Test
     void should_return_testValue_when_call_doSomething_method() {
-        assertEquals(ABRAKADABRA, exampleService.doSomethingWithError(ABRAKADABRA));
+        assertEquals(ABRAKADABRA, exampleService.doSomething(ABRAKADABRA));
     }
 }

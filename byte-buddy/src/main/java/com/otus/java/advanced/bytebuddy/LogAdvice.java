@@ -72,7 +72,7 @@ public class LogAdvice implements MethodInterceptor {
     private OurLogger getOurLoggerAnnotation(
             MethodInvocation invocation
     ) {
-        return Objects.requireNonNull(invocation.getThis()).getClass().getAnnotation(OurLogger.class);
+        return Objects.requireNonNull(invocation.getThis()).getClass().getSuperclass().getAnnotation(OurLogger.class);
     }
 
     private OurLog getOurLogAnnotation(
