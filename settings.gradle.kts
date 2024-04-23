@@ -4,6 +4,7 @@ include("byte-buddy")
 include("hash-service")
 include("java-lts-11-17-21")
 include("instrumentation")
+include("gc-test")
 
 include("instrumentation:perf-agent")
 findProject(":instrumentation:perf-agent")?.name = "perf-agent"
