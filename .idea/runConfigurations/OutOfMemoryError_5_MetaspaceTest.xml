@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="OutOfMemoryError_5_MetaspaceTest" type="Application" factoryName="Application" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="com.otus.java.advanced.memorydump.OutOfMemoryError_5_MetaspaceTest" />
+    <module name="java-advanced-course.memory-dump.test" />
+    <option name="VM_PARAMETERS" value="-XX:MetaspaceSize=8M -XX:MaxMetaspaceSize=16M -XX:+HeapDumpOnOutOfMemoryError --add-opens java.base/java.lang=ALL-UNNAMED" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.otus.java.advanced.memorydump.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
