@@ -14,3 +14,5 @@ findProject(":instrumentation:business-app")?.name = "business-app"
 
 include("instrumentation:agent-loader")
 findProject(":instrumentation:agent-loader")?.name = "agent-loader"
+
+include("memory-dump")
