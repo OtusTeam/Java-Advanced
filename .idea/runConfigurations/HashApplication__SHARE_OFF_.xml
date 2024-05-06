@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="HashApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+  <configuration default="false" name="HashApplication (SHARE-OFF)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <module name="java-advanced-course.hash-service.main" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.otus.javaadvanced.HashApplication" />
-    <option name="VM_PARAMETERS" value="-Xmx32m -XX:+HeapDumpOnOutOfMemoryError" />
+    <option name="VM_PARAMETERS" value="-Xshare:off -Xlog:class+load:file=cds_off.log -Xmx32m -XX:+HeapDumpOnOutOfMemoryError" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.otus.javaadvanced.*" />
