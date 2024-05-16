@@ -17,3 +17,4 @@ include("instrumentation:agent-loader")
 findProject(":instrumentation:agent-loader")?.name = "agent-loader"
 
 include("memory-dump")
+include("jdk-instruments")
