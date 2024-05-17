@@ -1,0 +1,4 @@
+-d javac-target
+-verbose
+-Xlint:rawtypes,unchecked
+.\src\main\java\com\otus\java\advanced\jdkinstruments\javac\XLint.java
