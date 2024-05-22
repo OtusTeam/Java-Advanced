@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ReRun JMH" type="CompoundRunConfigurationType">
+    <toRun name="java-advanced-course [clean]" type="GradleRunConfiguration" />
+    <toRun name="java-advanced-course [jmh]" type="GradleRunConfiguration" />
+    <method v="2" />
+  </configuration>
+</component>
