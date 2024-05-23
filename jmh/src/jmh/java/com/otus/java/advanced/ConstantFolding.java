@@ -1,9 +1,14 @@
 package com.otus.java.advanced;
 
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.*;
 
+import java.util.concurrent.TimeUnit;
+
+@BenchmarkMode(Mode.Throughput)
+@OutputTimeUnit(TimeUnit.SECONDS)
+@Fork(value = 1)
+@Warmup(iterations = 5, time = 3, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 5, time = 3, timeUnit = TimeUnit.SECONDS)
 public class ConstantFolding {
 
     /**
@@ -20,7 +25,6 @@ public class ConstantFolding {
 
         return Math.log(x);
     }
-
 
     @State(Scope.Benchmark)
     public static class Log {

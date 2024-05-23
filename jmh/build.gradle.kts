@@ -31,7 +31,11 @@ jmh {
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicRecursive*")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicSpeedUp*")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicCnt")
-    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicModeAll")
+//    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicModeAll")
+
+//    includes.addAll("com.otus.java.advanced.DeadCodeElimination")
+
+//    includes.addAll("com.otus.java.advanced.ConstantFolding")
 
 // lesson Parameters below are for gradle DSL. So they must be converted to kotlin DSL
 //    includes = ['some regular expression'] // include pattern (regular expression) for benchmarks to be executed
