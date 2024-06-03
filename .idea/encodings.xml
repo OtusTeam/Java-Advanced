@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/jmh/src/jmh/java/com/otus/java/advanced/FibonacciBenchmarks.java" charset="UTF-8" />
+    <file url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjdk.jmh/jmh-core/1.36/51e76cfad1b4224856a52f82fe247cc04995e317/jmh-core-1.36-sources.jar!/org/openjdk/jmh/annotations/Mode.java" charset="windows-1252" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
