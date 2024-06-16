@@ -24,8 +24,12 @@ tasks.test {
 // lesson These parameters overrides parameters from annotations
 jmh {
     excludes.addAll("*")
+    includes.addAll("com.otus.java.advanced.map.ConcurrentHashMapEx.benchmarkConcurrentHashMapGet")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicDefault")
-//    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicShort")
+    //includes.addAll("com.otus.java.advanced.map.ConcurrentHashMapEx.benchmarkConcurrentHashMapPut")
+    //includes.addAll("com.otus.java.advanced.map.HashTableEx.benchmarkHashtablePut")
+    //includes.addAll("com.otus.java.advanced.map.ConcurrentSkipListMapEx.benchmarkConcurrentSkipListMapPut")
+    //includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicShort")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicNoFork")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicTracing")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicRecursive*")
