@@ -18,4 +18,5 @@ findProject(":instrumentation:agent-loader")?.name = "agent-loader"
 
 include("memory-dump")
 include("jdk-instruments")
+include("reentrant-locks")
 include("jmh")
