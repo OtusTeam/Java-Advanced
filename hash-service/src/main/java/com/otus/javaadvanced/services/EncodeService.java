@@ -5,10 +5,11 @@ import lombok.RequiredArgsConstructor;
 import java.util.Arrays;
 import java.util.Base64;
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class EncodeService {
 
-    private final Encoder encoder;
+    private //final
+    Encoder encoder;
 
     // for emulation of large stacks
     private static final int STACK_DEPTH = 0;
