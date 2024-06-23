@@ -19,9 +19,8 @@ public class Config {
 
     @Bean
     public EncodeService encodeService(Encoder encoder) {
-        return new EncodeService();
+        return new EncodeService(encoder);
     }
-
 
     @Bean
     public Encoder encoder() {
