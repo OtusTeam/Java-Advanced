@@ -1,0 +1,11 @@
+“Open for extension...”
+
+A key design principle in Spring Web MVC and in Spring in general is the “Open for extension, closed for modification” principle.
+
+Some methods in the core classes of Spring Web MVC are marked final. As a developer you cannot override these methods to supply your own behavior. This has not been done arbitrarily, but specifically with this principle in mind.
+
+For an explanation of this principle, refer to Expert Spring Web MVC and Web Flow by Seth Ladd and others; specifically see the section "A Look At Design," on page 117 of the first edition. Alternatively, see
+
+Bob Martin, The Open-Closed Principle (PDF)
+
+You cannot add advice to final methods when you use Spring MVC. For example, you cannot add advice to the AbstractController.setSynchronizeOnSession() method. Refer to Section 9.6.1, “Understanding AOP proxies” for more information on AOP proxies and why you cannot add advice to final methods.
