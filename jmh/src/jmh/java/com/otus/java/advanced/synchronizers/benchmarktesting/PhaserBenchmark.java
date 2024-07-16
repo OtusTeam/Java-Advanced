@@ -18,9 +18,9 @@ public class PhaserBenchmark {
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.MICROSECONDS)
     public int testPhaserArrival() {
-        phaser.register(); // Регистрация участника
-        phaser.arriveAndDeregister(); // Участник прибыл и отмечен как завершивший этап
-        return phaser.getPhase(); // Возвращает номер текущего этапа
+        phaser.register();
+        phaser.arriveAndDeregister();
+        return phaser.getPhase();
     }
 
     public static void main(String[] args) throws RunnerException {

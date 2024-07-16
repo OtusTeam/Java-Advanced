@@ -10,7 +10,7 @@ public class ExchangerEx {
             try {
                 String data1 = "Data from Service 1";
                 System.out.println("Thread 1 is exchanging data: " + data1);
-                Thread.sleep(2000); // имитация работы
+                Thread.sleep(2000); 
                 String receivedData = exchanger.exchange(data1);
                 System.out.println("Thread 1 received: " + receivedData);
             } catch (InterruptedException e) {
@@ -22,7 +22,7 @@ public class ExchangerEx {
             try {
                 String data2 = "Data from Service 2";
                 System.out.println("Thread 2 is exchanging data: " + data2);
-                Thread.sleep(3000); // имитация работы
+                Thread.sleep(3000);
                 String receivedData = exchanger.exchange(data2);
                 System.out.println("Thread 2 received: " + receivedData);
             } catch (InterruptedException e) {

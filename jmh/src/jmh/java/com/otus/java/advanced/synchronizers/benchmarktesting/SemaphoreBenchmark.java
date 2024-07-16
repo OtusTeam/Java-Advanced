@@ -15,7 +15,7 @@ public class SemaphoreBenchmark {
 
     @Setup(Level.Iteration)
     public void setUp() {
-        semaphore = new Semaphore(1); // инициализация семафора с одним разрешением
+        semaphore = new Semaphore(1);
     }
 
     @Benchmark

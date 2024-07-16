@@ -4,13 +4,12 @@ import java.util.concurrent.CyclicBarrier;
 
 public class CyclicBarrierAndJoin {
     public static void main(String[] args) {
-        // Пример с использованием CyclicBarrier
         CyclicBarrier barrier = new CyclicBarrier(3);
 
         Runnable task = () -> {
             System.out.println(Thread.currentThread().getName() + " начал выполнение задачи.");
             try {
-                barrier.await(); // Поток ожидает другие потоки
+                barrier.await();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -21,7 +20,6 @@ public class CyclicBarrierAndJoin {
             new Thread(task).start();
         }
 
-        // Пример с использованием join()
         Thread t1 = new Thread(() -> {
             System.out.println("Поток 1 начал выполнение.");
             try {
@@ -35,7 +33,7 @@ public class CyclicBarrierAndJoin {
         Thread t2 = new Thread(() -> {
             System.out.println("Поток 2 начал выполнение.");
             try {
-                t1.join(); // Поток 2 ждет завершения потока t1
+                t1.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

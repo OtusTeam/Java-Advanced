@@ -16,7 +16,7 @@ public class CyclicBarrierBenchmark {
 
     @Setup(Level.Iteration)
     public void setUp() {
-        cyclicBarrier = new CyclicBarrier(2); // инициализация CyclicBarrier с двумя участниками
+        cyclicBarrier = new CyclicBarrier(2);
     }
 
     @Benchmark

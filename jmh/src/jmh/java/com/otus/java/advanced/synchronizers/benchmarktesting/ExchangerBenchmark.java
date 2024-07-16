@@ -18,7 +18,7 @@ public class ExchangerBenchmark {
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.MICROSECONDS)
     public Integer testExchanger() throws InterruptedException {
-        return exchanger.exchange(42); // Обмен значением с другим потоком
+        return exchanger.exchange(42);
     }
 
     public static void main(String[] args) throws RunnerException {

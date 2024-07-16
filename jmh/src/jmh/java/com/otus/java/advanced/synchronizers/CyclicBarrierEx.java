@@ -5,8 +5,6 @@ import java.util.concurrent.CyclicBarrier;
 
 public class CyclicBarrierEx {
         private static final CyclicBarrier BARRIER = new CyclicBarrier(10, new Game());
-        //Инициализируем барьер на три потока и таском, который будет выполняться, когда
-        //у барьера соберется три потока. После этого, они будут освобождены.
 
         public static void main(String[] args) throws InterruptedException {
             for (int i = 1; i <= 30; i++) {
@@ -15,20 +13,18 @@ public class CyclicBarrierEx {
             }
         }
 
-        //Таск, который будет выполняться при достижении сторонами барьера
         public static class Game implements Runnable {
             @Override
             public void run() {
                 try {
-                    System.out.println("Игра началась");
+                    System.out.println("start");
                     Thread.sleep(500);
-                    System.out.println("Игра закончилась!");
+                    System.out.println("finish");
                 } catch (InterruptedException e) {
                 }
             }
         }
 
-        //Стороны, которые будут достигать барьера
         public static class Gamer implements Runnable {
             private int gamerNumber;
 
@@ -39,11 +35,9 @@ public class CyclicBarrierEx {
             @Override
             public void run() {
                 try {
-                    System.out.printf("Игрок №%d подключился к серверу.\n", gamerNumber);
-                    //Для указания потоку о том что он достиг барьера, нужно вызвать метод await()
-                    //После этого данный поток блокируется, и ждет пока остальные стороны достигнут барьера
+                    System.out.printf("Player №%d connected to the server.\n", gamerNumber);
                     BARRIER.await();
-                    System.out.printf("Игрок №%d закончил игру.\n", gamerNumber);
+                    System.out.printf("Player №%d has finished the game.\n", gamerNumber);
                 } catch (Exception e) {
                 }
             }

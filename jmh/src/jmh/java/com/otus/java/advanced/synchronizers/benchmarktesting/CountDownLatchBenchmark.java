@@ -15,7 +15,7 @@ public class CountDownLatchBenchmark {
 
     @Setup(Level.Iteration)
     public void setUp() {
-        countDownLatch = new CountDownLatch(1); // инициализация CountDownLatch с одним счетчиком
+        countDownLatch = new CountDownLatch(1);
     }
 
     @Benchmark
