@@ -25,7 +25,7 @@ tasks.test {
 jmh {
     excludes.addAll("*")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicDefault")
-//    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicShort")
+    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicShort")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicNoFork")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicTracing")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicRecursive*")
