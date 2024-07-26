@@ -23,7 +23,7 @@ public class CustomServiceHealthIndicator implements HealthIndicator {
     @Override
     public Health health() {
         try {
-            restTemplate.getForObject("http://localhost:8080/actuator", String.class);
+            restTemplate.getForObject("http://localhost:8081/actuator", String.class);
             return new Health.Builder().up().build();
         } catch (RestClientException exception) {
             return new Health.Builder().down().build();
