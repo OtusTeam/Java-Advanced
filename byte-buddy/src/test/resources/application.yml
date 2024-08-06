@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: byte-buddy-research
+
+logging:
+  level:
+    root: info
+    com.otus.java.advanced.bytebuddy: trace

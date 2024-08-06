@@ -8,7 +8,6 @@ public class ExampleServiceConfiguration {
 
     @Bean
     public ExampleService exampleService() {
-        return new ExampleService();
+        return new ExampleServiceImpl();
     }
-
 }
