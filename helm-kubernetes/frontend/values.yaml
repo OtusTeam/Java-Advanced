@@ -1,0 +1,10 @@
+appname: helm-kubernetes-frontend
+protocol: TCP
+port: 8081
+nodePort: 30001
+type: NodePort
+replicas: 1
+image:
+  repository: iamsiberian/helm-kunernetes-frontend
+  tag: latest
+  pullPolicy: Always

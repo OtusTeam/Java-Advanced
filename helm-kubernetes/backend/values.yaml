@@ -1,0 +1,10 @@
+appname: helm-kubernetes-backend
+protocol: TCP
+port: 8080
+type: ClusterIP
+tier: backend
+replicas: 1
+image:
+  repository: iamsiberian/helm-kunernetes-backend
+  tag: latest
+  pullPolicy: Always

@@ -1,0 +1,6 @@
+curl --request GET --url http://localhost:30001/hello
+
+kubectl patch svc helm-kubernetes-frontend -p '{"spec":{"externalIPs":["192.168.65.60"]}}'
+helm install --dry-run --debug --values values.yaml Chart.yaml ./mychart
+
+
