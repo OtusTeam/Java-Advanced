@@ -1,0 +1,10 @@
+resilience4j.bulkhead:
+  instances:
+    default:
+      max-concurrent-calls: 180
+      max-wait-duration: 100ms
+      writableStackTraceEnabled: false
+
+
+
+

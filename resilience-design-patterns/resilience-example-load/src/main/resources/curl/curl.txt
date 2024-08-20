@@ -1,0 +1,9 @@
+curl --location 'http://localhost:8080/request/one'
+
+curl --location 'http://localhost:8080/request/two'
+
+curl --location 'http://localhost:8080/degradation' \
+--header 'Content-Type: application/json' \
+--data '{
+    "value": 5000
+}'

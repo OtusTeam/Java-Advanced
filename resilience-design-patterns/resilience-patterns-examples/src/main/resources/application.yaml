@@ -1,0 +1,65 @@
+#retry
+resilience4j.retry:
+  configs:
+    default:
+      maxAttempts: 3
+      waitDuration: 100ms
+  instances:
+    throwingException:
+      baseConfig: default
+      maxAttempts: 4
+      retryExceptions:
+        - java.lang.IllegalStateException
+
+#ratelimiter
+resilience4j.ratelimiter:
+    instances:
+      default:
+        limitForPeriod: 2
+        limitRefreshPeriod: 1s
+        timeoutDuration: 0s
+      rpm_limiter:
+        limitForPeriod: 4
+        limitRefreshPeriod: 1m
+        timeoutDuration: 0s
+
+#timelimiter
+resilience4j.timelimiter:
+  instances:
+    default:
+      timeoutDuration: 1s
+      cancelRunningFuture: true
+
+#circuitbreaker
+resilience4j.circuitbreaker:
+    instances:
+      default:
+        sliding-window-type: count_based #тип контроля
+        failure-rate-threshold: 70 #порог невалидных запросов
+        sliding-window-size: 10 #размер sliding window, при COUNT_BASED - обозначает количество запросов, при TIME_BASED - количество секунд
+
+        slowCallRateThreshold: 70 #порог медленных запросов
+        slowCallDurationThreshold: 200ms #время, по которому определяется что запрос является медленным
+
+        wait-duration-in-open-state: 1s #время, в течение которого состояние остается OPEN, после чего переходит в HALF_OPEN
+        permitted-number-of-calls-in-half-open-state: 1 #количество запросов, которые необходимо выполнить в HALF_OPEN состоянии
+
+
+      # minimum-number-of-calls: 10 #минимальное количество вызовов, по которым принимается решение о переключении состояния
+
+      # recordExceptions: #список исключений, при выбросе которых выполнение метода будет считаться невалидным
+      # ignoreExceptions: #список исключений, которые будут явно проигнорированы, при определении невалидных запросов
+      # recordFailurePredicate: #условие при котором, исключение будет расценено как невалидный ответ
+      # ignoreExceptionPredicate #условие при котором, исключение будет проигнорировано
+
+#bulkhead
+resilience4j.bulkhead:
+  instances:
+    default:
+      max-concurrent-calls: 3
+      max-wait-duration: 100ms
+      writableStackTraceEnabled: false
+
+
+
+
