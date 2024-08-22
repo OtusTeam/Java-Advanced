@@ -21,6 +21,9 @@ include("jdk-instruments")
 include("reentrant-locks")
 include("jmh")
 
+include(":grpc:productinfo:java:server")
+include(":grpc:productinfo:java:client")
+
 include("resilience-example-load")
 include("resilience-patterns-examples")
 
