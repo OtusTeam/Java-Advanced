@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="create_users_table" author="Kirill Danilov">
+        <preConditions>
+            <not>
+                <tableExists tableName="users" />
+            </not>
+        </preConditions>
+
+        <createTable tableName="users" remarks="Пользователи">
+            <column name="id" type="uuid" remarks="Идентификатор">
+                <constraints nullable="false" unique="true" primaryKey="true" primaryKeyName="users_pk"/>
+            </column>
+            <column name="name" type="VARCHAR(30)" remarks="имя">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(50)" remarks="фамилия">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(50)" remarks="отчество">
+            </column>
+            <column name="job_title" type="VARCHAR(50)" remarks="Должность">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="CHAR(5)" remarks="Пол"/>
+            <column name="document_series" type="VARCHAR(50)" remarks="Должность">
+                <constraints nullable="false"/>
+            </column>
+            <column name="document_number" type="VARCHAR(50)" remarks="Должность">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_of_birth" type="TIMESTAMP" remarks="Дата рождения">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_of_issue" type="TIMESTAMP" remarks="Дата выдачи документа">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mail" type="VARCHAR(50)" remarks="Почта">
+                <constraints unique="true" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
