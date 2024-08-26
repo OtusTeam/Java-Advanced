@@ -47,12 +47,6 @@ services:
     restart: always
     environment:
       - DYNAMIC_CONFIG_ENABLED=true
-#      - KAFKA_CLUSTERS_0_NAME=local
-#      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:29092
-#      - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
-#      - KAFKA_CLUSTERS_1_NAME=dso
-#      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=d5loan-kfc003lk.corp.dev.vtb:9092
-#      - KAFKA_CLUSTERS_0_ZOOKEEPER=d5loan-kfc003lk.corp.dev.vtb:2181
     links:
       - kafka
       - zookeeper
