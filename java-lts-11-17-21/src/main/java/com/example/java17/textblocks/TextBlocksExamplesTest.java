@@ -15,6 +15,8 @@
  */
 package com.example.java17.textblocks;
 
+import com.example.java17.records.Example2;
+
 public class TextBlocksExamplesTest {
 
 
@@ -116,7 +118,7 @@ public class TextBlocksExamplesTest {
               "id": 1,
               "firstName": "Neil",
               "lastName": "Brown"
-            }\
+          }\
           """;
     System.out.println(jsonString2);
 

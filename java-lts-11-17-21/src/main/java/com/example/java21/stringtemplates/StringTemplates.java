@@ -1,6 +1,7 @@
 package com.example.java21.stringtemplates;
 
 import static java.lang.StringTemplate.RAW;
+import static java.lang.StringTemplate.STR;
 import static java.util.FormatProcessor.FMT;
 
 public class StringTemplates {
@@ -77,7 +78,6 @@ public class StringTemplates {
         String processed = STR.process(st);
 
         System.out.println(processed);
-
 
     }
 }

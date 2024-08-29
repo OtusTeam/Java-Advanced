@@ -101,7 +101,7 @@ public class Example {
         demonstrateStringStripTrailing();
         demonstrateStringIsBlank();
         lines();
-        String multilineString = "Baeldung helps \n \n developers \n explore Java.";
+        String multilineString = "Otus helps \n \n developers \n explore Java.";
         List<String> lines = multilineString.lines()
                 .filter(line -> !line.isBlank())
                 .map(String::strip)
