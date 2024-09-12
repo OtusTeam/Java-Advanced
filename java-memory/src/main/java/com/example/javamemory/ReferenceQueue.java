@@ -1,6 +1,7 @@
 package com.example.javamemory;
 
 import java.lang.ref.PhantomReference;
+import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.TimeUnit;
 
@@ -16,6 +17,7 @@ public class ReferenceQueue {
 
         TimeUnit.SECONDS.sleep(3);
         System.out.println("from link " + phantom.get());
+        //System.out.println("from link weak " + weakReference.get());
         System.out.println("from queue " + queue.poll());
     }
 }
