@@ -7,7 +7,12 @@ import java.time.Duration;
 
 public class SimpleAllocate {
     // -XX:NativeMemoryTracking=summary
+    // найти идентификатор процесса jps -l
     // jcmd <pid> VM.native_memory summary
+    //
+    // отобразить по времени
+    // jcmd <pid> VM.native_memory baseline
+    // jcmd <pid> VM.native_memory summary.diff
     public static void main(String[] args) throws InterruptedException {
         String s = "My string";
         try (Arena arena = Arena.ofConfined()) {
