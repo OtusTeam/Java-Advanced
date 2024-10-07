@@ -26,7 +26,7 @@ public class GcTest {
     }
 
     /*
-    добавить в параметры запуска VM Options флаг -XX:+PrintGCDetails
+    добавить в параметры запуска VM Options флаг -XX:+PrintGCDetails или -Xlog:gc*
 
     1 Basic Command Line
     To enable the G1 Collector use: -XX:+UseG1GC
