@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: graalvm
+
+server:
+  port: 8080
