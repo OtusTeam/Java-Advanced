@@ -29,3 +29,4 @@ include("resilience-patterns-examples")
 
 project(":resilience-example-load").projectDir = file("resilience-design-patterns/resilience-example-load")
 project(":resilience-patterns-examples").projectDir = file("resilience-design-patterns/resilience-patterns-examples")
+include("graalvm")
