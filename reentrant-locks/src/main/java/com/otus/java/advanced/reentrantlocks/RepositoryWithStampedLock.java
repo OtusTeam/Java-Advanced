@@ -9,22 +9,22 @@ public class RepositoryWithStampedLock {
     private StampedLock lock = new StampedLock();
 
     public String getValueByKey(String key) {
-        long writeStamp = lock.writeLock();
+        long readStamp = lock.readLock();
 
         try {
             return map.get(key);
         } finally {
-            lock.unlockWrite(writeStamp);
+            lock.unlockRead(readStamp);
         }
     }
 
     public void putValue(String key, String value) {
-        long readStamp = lock.readLock();
+        long writeStamp = lock.writeLock();
 
         try {
             map.put(key, value);
         } finally {
-            lock.unlockRead(readStamp);
+            lock.unlockWrite(writeStamp);
         }
     }
 }
