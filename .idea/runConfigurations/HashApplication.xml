@@ -5,7 +5,7 @@
       <option name="environmentVariables" />
     </selectedOptions>
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.otus.javaadvanced.HashApplication" />
-    <option name="VM_PARAMETERS" value="-Xmx32m " />
+    <option name="VM_PARAMETERS" value="-Xmx32m  -XX:+HeapDumpOnOutOfMemoryError" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.otus.javaadvanced.*" />
