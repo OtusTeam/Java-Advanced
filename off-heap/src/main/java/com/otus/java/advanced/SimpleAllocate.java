@@ -29,6 +29,7 @@ public class SimpleAllocate {
             }
             Thread.sleep(Duration.ofMinutes(1));
 
+            // Java Heap +1953126KB
             MemorySegment allocatedMemory = arena.allocate(2000000000);
             System.out.println("allocate memory");
 
