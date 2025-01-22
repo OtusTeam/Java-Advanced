@@ -11,11 +11,4 @@ public class HashApplication /*implements ApplicationListener<ContextRefreshedEv
     public static void main(String[] args) {
         SpringApplication.run(HashApplication.class, args);
     }
-
-/* todo lesson CDS
-    @Override
-    public void onApplicationEvent(ContextRefreshedEvent event) {
-        Runtime.getRuntime().halt(-777);
-    }
-*/
 }
