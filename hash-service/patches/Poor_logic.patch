@@ -1,0 +1,67 @@
+Subject: [PATCH] Poor logic
+---
+Index: hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java b/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java
+--- a/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java	(revision f192219d3188653f5dc3eeacdce0cd9d9a864df9)
++++ b/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java	(date 1737572168161)
+@@ -15,7 +15,10 @@
+     public static long countException(Exception e) {
+         lock.lock();
+         try {
+-            return ++exceptionCount;
++            int load = 1;
++            for (int i = 0; i < 1_000_000; i++) load=load*load; // poor logic
++
++            return ++exceptionCount * load;
+         } finally {
+             lock.unlock();
+         }
+Index: hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java b/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java
+--- a/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java	(revision f192219d3188653f5dc3eeacdce0cd9d9a864df9)
++++ b/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java	(date 1737571591289)
+@@ -8,10 +8,10 @@
+ @RequiredArgsConstructor
+ public class EncodeService {
+ 
+-    private final Encoder encoder;
++    private Encoder encoder;
+ 
+     // for emulation of large stacks
+-    private static final int STACK_DEPTH = 0;
++    private static final int STACK_DEPTH = 1000;
+ 
+     public byte[] encode(byte[] hash) {
+         byte[] safe = Arrays.copyOf(hash, hash.length);
+Index: hash-service/src/main/java/com/otus/javaadvanced/config/Config.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java b/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java
+--- a/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java	(revision f192219d3188653f5dc3eeacdce0cd9d9a864df9)
++++ b/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java	(date 1737569227946)
+@@ -18,13 +18,8 @@
+     }
+ 
+     @Bean
+-    public EncodeService encodeService(Encoder encoder) {
+-        return new EncodeService(encoder);
+-    }
+-
+-    @Bean
+-    public Encoder encoder() {
+-        return (src) -> Base64.getEncoder().encode(src);
++    public EncodeService encodeService() {
++        return new EncodeService();
+     }
+ 
+     @Bean
