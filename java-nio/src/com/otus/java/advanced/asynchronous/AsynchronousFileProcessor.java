@@ -26,7 +26,7 @@ public class AsynchronousFileProcessor {
 
         String filePath
                 = "fileCopy.txt";
-        CreateTestFile.createTestFile(filePath, 1000);
+        CreateTestFile.createTestFile(filePath, 10);
         //Сначала создаём файл, а затем указываем его
         printFileContents(filePath);
 

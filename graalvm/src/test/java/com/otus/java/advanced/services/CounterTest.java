@@ -11,7 +11,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@Disabled("Disabled graalvm doesn't support mockito")
+//@Disabled("Disabled graalvm doesn't support mockito")
 @ExtendWith(SpringExtension.class)
 class CounterTest {
 

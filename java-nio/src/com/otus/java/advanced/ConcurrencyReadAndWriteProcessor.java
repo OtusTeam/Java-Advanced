@@ -10,9 +10,11 @@ import java.nio.file.StandardOpenOption;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static java.lang.StringTemplate.STR;
+
 public class ConcurrencyReadAndWriteProcessor {
     private static final String FILE_PATH = "testfile.txt";
-    private static final int FILE_SIZE = 10_000_000; // 10 MB
+    private static final int FILE_SIZE = 10_000; // 10 MB
     private static final int THREAD_COUNT = 3;
 
     public static void main(String[] args) throws IOException {

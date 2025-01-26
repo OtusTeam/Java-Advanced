@@ -18,7 +18,7 @@ public class FileProcessorIO {
     }
 
     public static void main(String[] args) {
-        File file = new File("C:\\Users\\DANILOV\\IdeaProjects\\Java-Advanced\\java-nio\\src\\com\\otus\\java\\advanced\\input\\example.txt");
+        File file = new File("java-nio/src/com/otus/java/advanced/input/example.txt");
         String filePath = file.getAbsolutePath();
         processFileWithIO(filePath);
     }

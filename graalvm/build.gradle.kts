@@ -36,7 +36,7 @@ tasks.bootJar {
 }
 
 graalvmNative {
-    testSupport = true
+    testSupport = false
     metadataRepository {
         enabled.set(true)
     }

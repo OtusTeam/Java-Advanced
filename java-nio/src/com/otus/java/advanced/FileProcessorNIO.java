@@ -1,6 +1,5 @@
 package com.otus.java.advanced;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,7 +21,7 @@ public class FileProcessorNIO {
     }
 
     public static void main(String[] args) {
-        Path path = Paths.get("C:\\Users\\DANILOV\\IdeaProjects\\Java-Advanced\\java-nio\\src\\com\\otus\\java\\advanced\\input\\example.txt");
+        Path path = Paths.get("java-nio/src/com/otus/java/advanced/input/example.txt");
         processFileWithNIO(path.toString());
     }
 }
