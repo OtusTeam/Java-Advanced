@@ -1,7 +1,6 @@
 package com.example.java21.stringtemplates;
 
 import static java.lang.StringTemplate.RAW;
-import static java.lang.StringTemplate.STR;
 import static java.util.FormatProcessor.FMT;
 
 public class StringTemplates {
@@ -49,15 +48,15 @@ public class StringTemplates {
         // The FMT template processor
         // The format specifiers are the same as those defined in java.util.Formatter
         record CartItem(String name, double price, int quantity) {
-            double subTotal(){
+            double subTotal() {
                 return price * quantity;
             }
         }
 
-        CartItem[] cartItems = new CartItem[] {
-          new CartItem("Coffee", 3.45, 3),
-          new CartItem("Latte", 5.20, 1),
-          new CartItem("Cappuccino", 4.60, 2),
+        CartItem[] cartItems = new CartItem[]{
+                new CartItem("Coffee", 3.45, 3),
+                new CartItem("Latte", 5.20, 1),
+                new CartItem("Cappuccino", 4.60, 2),
         };
 
         String receipt = FMT."""

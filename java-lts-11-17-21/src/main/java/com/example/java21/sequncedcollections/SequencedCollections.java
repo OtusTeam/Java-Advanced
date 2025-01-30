@@ -2,14 +2,12 @@ package com.example.java21.sequncedcollections;
 
 import java.util.*;
 
-import static java.lang.StringTemplate.STR;
-
 public class SequencedCollections {
 
     public static void main(String[] args) {
         SequencedSet list = new LinkedHashSet();
         SequencedMap<String, Integer> map = new LinkedHashMap<>();
-        List<Integer> numbers = new ArrayList<>(List.of(1,2,3,4,5,6,7,8,9));
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9));
         int first = numbers.get(0);
         int last = numbers.get(numbers.size() - 1);
 
