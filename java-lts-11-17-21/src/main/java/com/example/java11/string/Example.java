@@ -12,7 +12,6 @@ public class Example {
      *
      * @param headerText Title of header.
      */
-
     private static void writeHeader(final String headerText) {
         final String headerSeparator = "=".repeat(headerText.length() + 4);
 
@@ -20,7 +19,6 @@ public class Example {
         System.out.println(headerText);
         System.out.println(headerSeparator);
     }
-
 
     /**
      * Demonstrate method {@code String.lines()} added with JDK 11.
@@ -108,5 +106,4 @@ public class Example {
                 .collect(Collectors.toList());
         lines.forEach(System.out::println);
     }
-
 }

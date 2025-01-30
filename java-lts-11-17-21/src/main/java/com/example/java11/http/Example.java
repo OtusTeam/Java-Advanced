@@ -53,7 +53,7 @@ public class Example {
         HttpClient client = HttpClient.newHttpClient();
 
         Gson gson = new Gson();
-        Foo foo  = new Foo();
+        Foo foo = new Foo();
         foo.name = "王爵nice";
         foo.url = "https://github.com/biezhi";
 
@@ -83,16 +83,14 @@ public class Example {
                 .GET()
                 .build();
 
-        Path               tempFile = Files.createTempFile("consol-labs-home", ".html");
+        Path tempFile = Files.createTempFile("consol-labs-home", ".html");
         HttpResponse<Path> response = client.send(request, HttpResponse.BodyHandlers.ofFile(tempFile));
         System.out.println(response.statusCode());
         System.out.println(response.body());
     }
 
-
     public static void uploadFile() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
-
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(new URI("http://localhost:8080/upload/"))
@@ -170,14 +168,14 @@ public class Example {
                 .collect(toList());
 
         CompletableFuture.allOf(requests.stream()
-                .map(request -> client.sendAsync(request, HttpResponse.BodyHandlers.ofString()))
-                .toArray(CompletableFuture<?>[]::new))
+                        .map(request -> client.sendAsync(request, HttpResponse.BodyHandlers.ofString()))
+                        .toArray(CompletableFuture<?>[]::new))
                 .join();
     }
 
     public static void main(String[] args) throws Exception {
-       syncGet("https://biezhi.me");
-       asyncGet("https://biezhi.me");
+        syncGet("https://biezhi.me");
+        asyncGet("https://biezhi.me");
         asyncPost();
         http2();
     }

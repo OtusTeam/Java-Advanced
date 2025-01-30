@@ -48,90 +48,90 @@ import java.util.Random;
  */
 public class SwitchExpressionsExamples {
 
-  private static final Logger logger = LoggerFactory.getLogger(SwitchExpressionsExamples.class);
+    private static final Logger logger = LoggerFactory.getLogger(SwitchExpressionsExamples.class);
 
-  /**
-   * Provides an example of a switch expression that uses an enum for its selector variable, which serves to
-   * illustrate a number of the new syntax and features of switch expressions, including -
-   * <p>
-   * 1) The ability to write a single case label to match multiple values, rather than needing one case label per value.
-   * <p>
-   * 2) Execution of case blocks no longer fall through to the next case block by default, which removes the need to
-   * write break statements at the end of case blocks in the most common cases, removing a common source of bugs.
-   * <p>
-   * 3) You can return a value from a case block that can be assigned to a local var, i.e. switch is now an expression.
-   * <p>
-   * For comparison purposes the example is first implemented using a switch statement.
-	 */
-  public void switchOnEnum() {
-    final var dayOfWeek = DayOfWeek.of(new Random().nextInt(1, 7));
+    /**
+     * Provides an example of a switch expression that uses an enum for its selector variable, which serves to
+     * illustrate a number of the new syntax and features of switch expressions, including -
+     * <p>
+     * 1) The ability to write a single case label to match multiple values, rather than needing one case label per value.
+     * <p>
+     * 2) Execution of case blocks no longer fall through to the next case block by default, which removes the need to
+     * write break statements at the end of case blocks in the most common cases, removing a common source of bugs.
+     * <p>
+     * 3) You can return a value from a case block that can be assigned to a local var, i.e. switch is now an expression.
+     * <p>
+     * For comparison purposes the example is first implemented using a switch statement.
+     */
+    public void switchOnEnum() {
+        final var dayOfWeek = DayOfWeek.of(new Random().nextInt(1, 7));
 
-    // For comparison, example of a traditional switch _statement_, the only option prior to JDK 14
-    int numberOfLetters1;
-    switch (dayOfWeek) {
-      // Handling multiple constants in same way can be done but requires repeating the 'case' label -
-      case MONDAY:
-      case FRIDAY:
-      case SUNDAY:
-        numberOfLetters1 = 6;
-        break; // By default logic falls through to next case block, so breaks are typically needed
-      case TUESDAY:
-        numberOfLetters1 = 7;
-        break;
-      case THURSDAY:
-      case SATURDAY:
-        numberOfLetters1 = 8;
-        break;
-      case WEDNESDAY:
-        numberOfLetters1 = 9;
-        break;
-      // Optional default statement, typically needed to check for unhandled cases.
-      default:
-        throw new IllegalStateException("Logic error. Unknown day of week [" + dayOfWeek + "].");
+        // For comparison, example of a traditional switch _statement_, the only option prior to JDK 14
+        int numberOfLetters1;
+        switch (dayOfWeek) {
+            // Handling multiple constants in same way can be done but requires repeating the 'case' label -
+            case MONDAY:
+            case FRIDAY:
+            case SUNDAY:
+                numberOfLetters1 = 6;
+                break; // By default logic falls through to next case block, so breaks are typically needed
+            case TUESDAY:
+                numberOfLetters1 = 7;
+                break;
+            case THURSDAY:
+            case SATURDAY:
+                numberOfLetters1 = 8;
+                break;
+            case WEDNESDAY:
+                numberOfLetters1 = 9;
+                break;
+            // Optional default statement, typically needed to check for unhandled cases.
+            default:
+                throw new IllegalStateException("Logic error. Unknown day of week [" + dayOfWeek + "].");
+        }
+
+
+        // Rewrite of the above example as a switch expression from JDK 14 onwards -
+
+        // Expression returns a result, allowing assigned variable to be declared final
+        final int numberOfLetters2 = switch (dayOfWeek) {
+            // Matching & handling multiple values in the same way only now requires a single 'case' label with csv
+            case MONDAY, FRIDAY, SUNDAY -> 6;
+            // New case label syntax '->' signifies to execute only code in this case block and return result, no break needed
+            case TUESDAY -> 7;
+            // Case blocks with a single statement don't require a return (yield) statement
+            case THURSDAY, SATURDAY -> 8;
+            case WEDNESDAY -> 9;
+            // default statement not needed when switching on enum as compilation error now reported if constant not handled
+        };
+
     }
 
+    /**
+     * Provides an example of how to write a switch expression that supports a case block comprising more than one
+     * statement.
+     */
+    public void caseBlockWithYield() {
+        final var phonetics = new String[]{"alfa", "bravo", "charlie", "delta", "echo", "foxtrot"};
+        final var phonetic = phonetics[new Random().nextInt(0, phonetics.length - 1)];
 
-    // Rewrite of the above example as a switch expression from JDK 14 onwards -
+        int phoneticLength = switch (phonetic) {
+            // Case blocks consisting of multiple statements are supported. They need to be declared with braces, and must
+            // return a value using the new 'yield' statement. (The yield keyword is used instead of return to
+            // differentiate between returning to the switch expression and returning from the enclosing method).
+            case "alfa" -> {
+                logger.info("Matched alfa");
+                yield 4;
+            }
+            case "bravo" -> 5;
+            // The default clause also supports blocks of code
+            // (The default clause is mandatory in this case as when switching on an arbitrary string the compile can't
+            // perform an exhaustive check that all possible values are handled).
+            default -> {
+                logger.debug("Matched phonetic [" + phonetic + "]");
+                yield phonetic.length();
+            }
+        };
 
-    // Expression returns a result, allowing assigned variable to be declared final
-    final int numberOfLetters2 = switch (dayOfWeek) {
-      // Matching & handling multiple values in the same way only now requires a single 'case' label with csv
-      case MONDAY, FRIDAY, SUNDAY -> 6;
-      // New case label syntax '->' signifies to execute only code in this case block and return result, no break needed
-      case TUESDAY -> 7;
-      // Case blocks with a single statement don't require a return (yield) statement
-      case THURSDAY, SATURDAY -> 8;
-      case WEDNESDAY -> 9;
-      // default statement not needed when switching on enum as compilation error now reported if constant not handled
-    };
-
-  }
-
-  /**
-   * Provides an example of how to write a switch expression that supports a case block comprising more than one
-   * statement.
-   */
-  public void caseBlockWithYield() {
-    final var phonetics = new String[]{ "alfa", "bravo", "charlie", "delta", "echo", "foxtrot" };
-    final var phonetic = phonetics[new Random().nextInt(0, phonetics.length - 1)];
-
-    int phoneticLength = switch(phonetic) {
-      // Case blocks consisting of multiple statements are supported. They need to be declared with braces, and must
-      // return a value using the new 'yield' statement. (The yield keyword is used instead of return to
-      // differentiate between returning to the switch expression and returning from the enclosing method).
-      case "alfa" -> {
-        logger.info("Matched alfa");
-        yield 4;
-      }
-      case "bravo" -> 5;
-      // The default clause also supports blocks of code
-      // (The default clause is mandatory in this case as when switching on an arbitrary string the compile can't
-      // perform an exhaustive check that all possible values are handled).
-      default -> {
-        logger.debug("Matched phonetic [" + phonetic + "]");
-        yield phonetic.length();
-      }
-    };
-
-  }
+    }
 }

@@ -8,7 +8,7 @@ public class Example {
     public static void main(String[] args) throws Exception {
         BufferedReader reader1 = new BufferedReader(new FileReader("./README.md"));
         try (reader1) {
-            while(reader1.ready()){
+            while (reader1.ready()) {
                 System.out.println(reader1.readLine());
             }
         }

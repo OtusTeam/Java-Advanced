@@ -6,7 +6,6 @@ public interface Example {
         System.out.println("Hello！");
     }
 
-
     void normalInterfaceMethod();
 
     default void interfaceMethodWithDefault() {
@@ -20,5 +19,4 @@ public interface Example {
     private void init() {
         System.out.println("init method...");
     }
-
 }
