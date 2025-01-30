@@ -63,7 +63,7 @@ public class SwitchExpressionsExamples {
      * <p>
      * For comparison purposes the example is first implemented using a switch statement.
      */
-    public void switchOnEnum() {
+    public static void switchOnEnum() {
         final var dayOfWeek = DayOfWeek.of(new Random().nextInt(1, 7));
 
         // For comparison, example of a traditional switch _statement_, the only option prior to JDK 14
@@ -111,7 +111,7 @@ public class SwitchExpressionsExamples {
      * Provides an example of how to write a switch expression that supports a case block comprising more than one
      * statement.
      */
-    public void caseBlockWithYield() {
+    public static void caseBlockWithYield() {
         final var phonetics = new String[]{"alfa", "bravo", "charlie", "delta", "echo", "foxtrot"};
         final var phonetic = phonetics[new Random().nextInt(0, phonetics.length - 1)];
 
@@ -120,7 +120,7 @@ public class SwitchExpressionsExamples {
             // return a value using the new 'yield' statement. (The yield keyword is used instead of return to
             // differentiate between returning to the switch expression and returning from the enclosing method).
             case "alfa" -> {
-                logger.info("Matched alfa");
+                System.out.println("Matched alfa");
                 yield 4;
             }
             case "bravo" -> 5;
@@ -128,10 +128,15 @@ public class SwitchExpressionsExamples {
             // (The default clause is mandatory in this case as when switching on an arbitrary string the compile can't
             // perform an exhaustive check that all possible values are handled).
             default -> {
-                logger.debug("Matched phonetic [" + phonetic + "]");
+                System.out.println("Matched phonetic [" + phonetic + "]");
                 yield phonetic.length();
             }
-        };
 
+        };
+        System.out.println("RESULT: " + phoneticLength);
+    }
+
+    public static void main(String[] args) {
+        caseBlockWithYield();
     }
 }
