@@ -31,3 +31,4 @@ project(":resilience-example-load").projectDir = file("resilience-design-pattern
 project(":resilience-patterns-examples").projectDir = file("resilience-design-patterns/resilience-patterns-examples")
 include("graalvm")
 include("jmeter")
+include("virtual-threads-demo")
