@@ -1,4 +1,4 @@
-Subject: [PATCH] Poor logic
+Subject: [PATCH] poor_logic
 ---
 Index: hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java
 IDEA additional info:
@@ -6,8 +6,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java b/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java
---- a/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java	(revision f192219d3188653f5dc3eeacdce0cd9d9a864df9)
-+++ b/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java	(date 1737572168161)
+--- a/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java	(revision 5e6efa571cc18f8438c376d9b68df2e5bb6cee01)
++++ b/hash-service/src/main/java/com/otus/javaadvanced/services/ExceptionUtils.java	(date 1739808845562)
 @@ -15,7 +15,10 @@
      public static long countException(Exception e) {
          lock.lock();
@@ -26,8 +26,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java b/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java
---- a/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java	(revision f192219d3188653f5dc3eeacdce0cd9d9a864df9)
-+++ b/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java	(date 1737571591289)
+--- a/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java	(revision 5e6efa571cc18f8438c376d9b68df2e5bb6cee01)
++++ b/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeService.java	(date 1739808845557)
 @@ -8,10 +8,10 @@
  @RequiredArgsConstructor
  public class EncodeService {
@@ -37,18 +37,37 @@ diff --git a/hash-service/src/main/java/com/otus/javaadvanced/services/EncodeSer
  
      // for emulation of large stacks
 -    private static final int STACK_DEPTH = 0;
-+    private static final int STACK_DEPTH = 1000;
++    private static final int STACK_DEPTH = 50;
  
      public byte[] encode(byte[] hash) {
          byte[] safe = Arrays.copyOf(hash, hash.length);
+Index: hash-service/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/hash-service/src/main/resources/application.yml b/hash-service/src/main/resources/application.yml
+--- a/hash-service/src/main/resources/application.yml	(revision 5e6efa571cc18f8438c376d9b68df2e5bb6cee01)
++++ b/hash-service/src/main/resources/application.yml	(date 1739808700454)
+@@ -6,8 +6,8 @@
+   port: 8080
+   tomcat:
+     threads:
+-      min-spare: 10
+-      max: 200
++      min-spare: 1
++      max: 3
+   shutdown: graceful
+ 
+ management:
 Index: hash-service/src/main/java/com/otus/javaadvanced/config/Config.java
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java b/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java
---- a/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java	(revision f192219d3188653f5dc3eeacdce0cd9d9a864df9)
-+++ b/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java	(date 1737569227946)
+--- a/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java	(revision 5e6efa571cc18f8438c376d9b68df2e5bb6cee01)
++++ b/hash-service/src/main/java/com/otus/javaadvanced/config/Config.java	(date 1739808845551)
 @@ -18,13 +18,8 @@
      }
  
