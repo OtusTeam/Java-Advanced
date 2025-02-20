@@ -27,4 +27,19 @@ public class RepositoryWithStampedLock {
             lock.unlockWrite(writeStamp);
         }
     }
+
+    public String readWithOptimisticLock(String key) {
+        long stamp = lock.tryOptimisticRead();
+        String value = map.get(key);
+
+        if(!lock.validate(stamp)) {
+            stamp = lock.readLock();
+            try {
+                return map.get(key);
+            } finally {
+                lock.unlock(stamp);
+            }
+        }
+        return value;
+    }
 }
