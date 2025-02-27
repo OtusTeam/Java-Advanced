@@ -13,6 +13,15 @@ public class CallCFunction {
     // signature of C function
     // size_t strlen(const char *s);
 
+    /*
+        find foreign dll & function
+
+        try (Arena arena = Arena.ofConfined()) {
+            SymbolLookup opengl = SymbolLookup.libraryLookup("libGL.so", arena);
+            MemorySegment glVersion = opengl.find("glGetString").get();
+        }
+     */
+
     public static void main(String[] args) throws Throwable {
         System.out.println("String length is: " + invokeStrlen("abrakadabra"));
     }
