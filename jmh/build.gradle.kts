@@ -42,6 +42,13 @@ jmh {
 //    includes.addAll("com.otus.java.advanced.map.HashTableEx.benchmarkHashtablePut")
 //    includes.addAll("com.otus.java.advanced.map.ConcurrentSkipListMapEx.benchmarkConcurrentSkipListMapPut")
 
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_1_NoThreadSafeCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_2_VolatileNoThreadSafeCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_3_SynchronizedCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_4_LockedCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_5_ReadWriteLockedCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_6_AtomicCounter")
+
 // lesson Parameters below are for gradle DSL. So they must be converted to kotlin DSL
 //    includes = ['some regular expression'] // include pattern (regular expression) for benchmarks to be executed
 //    excludes = ['some regular expression'] // exclude pattern (regular expression) for benchmarks to be executed
