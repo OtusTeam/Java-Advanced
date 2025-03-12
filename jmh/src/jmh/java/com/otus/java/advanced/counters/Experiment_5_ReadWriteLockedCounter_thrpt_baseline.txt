@@ -1,0 +1,32 @@
+Benchmark                                                                                                              Mode  Cnt   Score    Error   Units
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g1_write_1_read_1                      thrpt    5   0,015 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g1_write_1_read_1:w1_r1_Read           thrpt    5   0,004 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g1_write_1_read_1:w1_r1_Write          thrpt    5   0,011 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g2_write_1_read_10                     thrpt    5   0,009 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g2_write_1_read_10:w1_r10_Read         thrpt    5   0,006 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g2_write_1_read_10:w1_r10_Write        thrpt    5   0,003 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g3_write_1_read_100                    thrpt    5   0,005 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g3_write_1_read_100:w1_r100_Read       thrpt    5   0,005 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g3_write_1_read_100:w1_r100_Write      thrpt    5  ≈ 10⁻⁷           ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g4_write_10_read_1                     thrpt    5   0,040 ±  0,003  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g4_write_10_read_1:w10_r1_Read         thrpt    5  ≈ 10⁻⁵           ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g4_write_10_read_1:w10_r1_Write        thrpt    5   0,040 ±  0,003  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g5_write_10_read_10                    thrpt    5   0,025 ±  0,006  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g5_write_10_read_10:w10_r10_Read       thrpt    5   0,005 ±  0,003  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g5_write_10_read_10:w10_r10_Write      thrpt    5   0,020 ±  0,004  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g6_write_10_read_100                   thrpt    5   0,005 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g6_write_10_read_100:w10_r100_Read     thrpt    5   0,005 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g6_write_10_read_100:w10_r100_Write    thrpt    5  ≈ 10⁻⁵           ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g7_write_100_read_1                    thrpt    5   0,044 ±  0,004  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g7_write_100_read_1:w100_r1_Read       thrpt    5  ≈ 10⁻⁶           ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g7_write_100_read_1:w100_r1_Write      thrpt    5   0,044 ±  0,004  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g8_write_100_read_10                   thrpt    5   0,042 ±  0,003  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g8_write_100_read_10:w100_r10_Read     thrpt    5   0,001 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g8_write_100_read_10:w100_r10_Write    thrpt    5   0,041 ±  0,003  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g9_write_100_read_100                  thrpt    5   0,011 ±  0,033  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g9_write_100_read_100:w100_r100_Read   thrpt    5   0,005 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g9_write_100_read_100:w100_r100_Write  thrpt    5   0,006 ±  0,032  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterSimple.multithreadRead                         thrpt    5   0,005 ±  0,001  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterSimple.multithreadWrite                        thrpt    5   0,045 ±  0,005  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterSimple.singleRead                              thrpt    5   0,061 ±  0,004  ops/ns
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterSimple.singleWrite                             thrpt    5   0,074 ±  0,006  ops/ns

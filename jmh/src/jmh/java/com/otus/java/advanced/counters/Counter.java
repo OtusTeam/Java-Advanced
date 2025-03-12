@@ -1,8 +1,6 @@
 package com.otus.java.advanced.counters;
 
-public interface Counter {
+import com.otus.java.advanced.SharedData;
 
-    long writeOperation();
-
-    long readOperation();
+public interface Counter extends SharedData {
 }

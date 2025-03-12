@@ -1,0 +1,89 @@
+Benchmark                                                                                                             Mode  Cnt         Score          Error  Units
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g1_write_1_read_1                      avgt    5       185,180 ±       29,313  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g1_write_1_read_1:w1_r1_Read           avgt    5       297,201 ±       58,750  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g1_write_1_read_1:w1_r1_Write          avgt    5        73,160 ±        7,334  ns/op
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g2_write_1_read_10                     avgt    5      1399,063 ±      239,000  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g2_write_1_read_10:w1_r10_Read         avgt    5      1507,138 ±      262,875  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g2_write_1_read_10:w1_r10_Write        avgt    5       318,309 ±        9,230  ns/op
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g3_write_1_read_100                    avgt    5    177915,796 ±   564090,626  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g3_write_1_read_100:w1_r100_Read       avgt    5     22027,296 ±     3429,253  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g3_write_1_read_100:w1_r100_Write      avgt    5  15766765,771 ± 56764708,301  ns/op
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g4_write_10_read_1                     avgt    5      5990,592 ±      447,335  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g4_write_10_read_1:w10_r1_Read         avgt    5     63529,450 ±     4814,938  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g4_write_10_read_1:w10_r1_Write        avgt    5       236,706 ±       12,206  ns/op
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g5_write_10_read_10                    avgt    5      1161,550 ±      330,355  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g5_write_10_read_10:w10_r10_Read       avgt    5      1843,542 ±      606,473  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g5_write_10_read_10:w10_r10_Write      avgt    5       479,559 ±       65,634  ns/op
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g6_write_10_read_100                   avgt    5   1499380,777 ±  6849567,054  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g6_write_10_read_100:w10_r100_Read     avgt    5   1506979,336 ±  7409655,852  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g6_write_10_read_100:w10_r100_Write    avgt    5   1423395,192 ±  2696704,776  ns/op
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g7_write_100_read_1                    avgt    5      8083,036 ±     1132,813  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g7_write_100_read_1:w100_r1_Read       avgt    5    595931,692 ±    97846,876  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g7_write_100_read_1:w100_r1_Write      avgt    5      2204,549 ±      168,508  ns/op
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g8_write_100_read_10                   avgt    5      3204,514 ±      593,739  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g8_write_100_read_10:w100_r10_Read     avgt    5      9921,873 ±     3278,655  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g8_write_100_read_10:w100_r10_Write    avgt    5      2532,779 ±      477,068  ns/op
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g9_write_100_read_100                  avgt    5    485157,682 ±  2570667,885  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g9_write_100_read_100:w100_r100_Read   avgt    5    875845,835 ±  4717750,186  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g9_write_100_read_100:w100_r100_Write  avgt    5     94469,530 ±   484461,967  ns/op
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterSimple.multithreadRead                         avgt    5      3269,338 ±       91,885  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterSimple.multithreadWrite                        avgt    5       370,814 ±       48,869  ns/op
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterSimple.singleRead                              avgt    5        16,146 ±        0,410  ns/op
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterSimple.singleWrite                             avgt    5        13,478 ±        1,493  ns/op
+
+
+
+Benchmark
+                                                                                                            Mode  Cnt      Score      Error   Units
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g1_write_1_read_1                      thrpt    5  15095,933 ±  843,682  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g1_write_1_read_1:w1_r1_Read           thrpt    5   3187,818 ±  554,057  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g1_write_1_read_1:w1_r1_Write          thrpt    5  11908,115 ±  472,680  ops/ms
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g2_write_1_read_10                     thrpt    5   9104,413 ±  663,707  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g2_write_1_read_10:w1_r10_Read         thrpt    5   6004,453 ±  307,244  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g2_write_1_read_10:w1_r10_Write        thrpt    5   3099,960 ±  380,503  ops/ms
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g3_write_1_read_100                    thrpt    5   4834,348 ±  542,454  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g3_write_1_read_100:w1_r100_Read       thrpt    5   4834,320 ±  542,421  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g3_write_1_read_100:w1_r100_Write      thrpt    5      0,027 ±    0,083  ops/ms
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g4_write_10_read_1                     thrpt    5  40864,672 ± 5164,840  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g4_write_10_read_1:w10_r1_Read         thrpt    5     14,993 ±    2,491  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g4_write_10_read_1:w10_r1_Write        thrpt    5  40849,679 ± 5162,439  ops/ms
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g5_write_10_read_10                    thrpt    5  25181,523 ± 5843,240  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g5_write_10_read_10:w10_r10_Read       thrpt    5   5012,134 ± 2200,315  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g5_write_10_read_10:w10_r10_Write      thrpt    5  20169,389 ± 3828,712  ops/ms
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g6_write_10_read_100                   thrpt    5   4779,139 ± 1137,419  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g6_write_10_read_100:w10_r100_Read     thrpt    5   4766,213 ± 1147,653  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g6_write_10_read_100:w10_r100_Write    thrpt    5     12,926 ±   12,641  ops/ms
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g7_write_100_read_1                    thrpt    5  43898,722 ± 1455,067  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g7_write_100_read_1:w100_r1_Read       thrpt    5      1,665 ±    0,061  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g7_write_100_read_1:w100_r1_Write      thrpt    5  43897,056 ± 1455,017  ops/ms
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g8_write_100_read_10                   thrpt    5  40916,069 ± 3289,747  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g8_write_100_read_10:w100_r10_Read     thrpt    5   1106,133 ±  311,613  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g8_write_100_read_10:w100_r10_Write    thrpt    5  39809,936 ± 3167,445  ops/ms
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g9_write_100_read_100                  thrpt    5   5625,823 ± 1804,971  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g9_write_100_read_100:w100_r100_Read   thrpt    5   4936,860 ± 1183,606  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterGrouped.g9_write_100_read_100:w100_r100_Write  thrpt    5    688,963 ± 1871,276  ops/ms
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterSimple.multithreadRead                         thrpt    5   5338,315 ±  655,437  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterSimple.multithreadWrite                        thrpt    5  42739,909 ± 7754,362  ops/ms
+
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterSimple.singleRead                              thrpt    5  58774,726 ± 5826,692  ops/ms
+Experiment_5_ReadWriteLockedCounter.Experiment_5_ReadWriteLockedCounterSimple.singleWrite                             thrpt    5  73667,614 ± 5887,713  ops/ms
