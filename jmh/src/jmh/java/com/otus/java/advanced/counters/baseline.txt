@@ -1,0 +1,25 @@
+Benchmark                                                          Mode  Cnt     Score     Error  Units
+Experiment_1_NoThreadSafeCounter.multithreadCounterRead            avgt    5     1,247 ±   0,031  ns/op
+Experiment_1_NoThreadSafeCounter.multithreadCounterWrite           avgt    5    11,530 ±   1,252  ns/op
+Experiment_1_NoThreadSafeCounter.singleThreadCounterRead           avgt    5     0,476 ±   0,049  ns/op
+Experiment_1_NoThreadSafeCounter.singleThreadCounterWrite          avgt    5     0,501 ±   0,045  ns/op
+Experiment_2_VolatileNoThreadSafeCounter.multithreadCounterRead    avgt    5     1,281 ±   0,027  ns/op
+Experiment_2_VolatileNoThreadSafeCounter.multithreadCounterWrite   avgt    5   272,339 ±  34,804  ns/op
+Experiment_2_VolatileNoThreadSafeCounter.singleThreadCounterRead   avgt    5     0,497 ±   0,172  ns/op
+Experiment_2_VolatileNoThreadSafeCounter.singleThreadCounterWrite  avgt    5     4,841 ±   1,001  ns/op
+Experiment_3_SynchronizedCounter.multithreadCounterRead            avgt    5   442,821 ±  28,172  ns/op
+Experiment_3_SynchronizedCounter.multithreadCounterWrite           avgt    5   518,164 ± 144,224  ns/op
+Experiment_3_SynchronizedCounter.singleThreadCounterRead           avgt    5    17,312 ±   7,153  ns/op
+Experiment_3_SynchronizedCounter.singleThreadCounterWrite          avgt    5    17,500 ±   1,522  ns/op
+Experiment_4_LockedCounter.multithreadCounterRead                  avgt    5   364,673 ±  13,991  ns/op
+Experiment_4_LockedCounter.multithreadCounterWrite                 avgt    5   362,729 ±  15,065  ns/op
+Experiment_4_LockedCounter.singleThreadCounterRead                 avgt    5    13,951 ±   0,802  ns/op
+Experiment_4_LockedCounter.singleThreadCounterWrite                avgt    5    14,392 ±   2,503  ns/op
+Experiment_5_ReadWriteLockedCounter.multithreadCounterRead         avgt    5  2921,047 ± 208,167  ns/op
+Experiment_5_ReadWriteLockedCounter.multithreadCounterWrite        avgt    5   388,686 ±  50,280  ns/op
+Experiment_5_ReadWriteLockedCounter.singleThreadCounterRead        avgt    5    18,381 ±   5,909  ns/op
+Experiment_5_ReadWriteLockedCounter.singleThreadCounterWrite       avgt    5    14,677 ±   3,651  ns/op
+Experiment_6_AtomicCounter.multithreadCounterRead                  avgt    5     1,771 ±   0,550  ns/op
+Experiment_6_AtomicCounter.multithreadCounterWrite                 avgt    5   214,521 ± 105,456  ns/op
+Experiment_6_AtomicCounter.singleThreadCounterRead                 avgt    5     0,620 ±   0,032  ns/op
+Experiment_6_AtomicCounter.singleThreadCounterWrite                avgt    5     4,804 ±   0,474  ns/op
