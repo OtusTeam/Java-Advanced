@@ -15,7 +15,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class SharedDataImplementations {
 
-    private static final int UPPER_KEY = 1000;
+    private static final int UPPER_KEY = 100;
     private final Random random = new Random(1234);
 
     public static long getRandomLong() {
