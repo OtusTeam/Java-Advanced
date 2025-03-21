@@ -9,7 +9,7 @@
             <DockerPortBindingImpl>
               <option name="containerPort" value="8080" />
               <option name="hostIp" value="0.0.0.0" />
-              <option name="hostPort" value="8080" />
+              <option name="hostPort" value="8088" />
             </DockerPortBindingImpl>
           </list>
         </option>
