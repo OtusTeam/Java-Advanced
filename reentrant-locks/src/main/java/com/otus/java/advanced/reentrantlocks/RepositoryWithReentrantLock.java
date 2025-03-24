@@ -9,22 +9,22 @@ public class RepositoryWithReentrantLock {
     private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
     public String getValueByKey(String key) {
-        lock.writeLock().lock();
+        lock.readLock().lock();
 
         try {
             return map.get(key);
         } finally {
-            lock.writeLock().unlock();
+            lock.readLock().unlock();
         }
     }
 
     public void putValue(String key, String value) {
-        lock.readLock().lock();
+        lock.writeLock().lock();
 
         try {
             map.put(key, value);
         } finally {
-            lock.readLock().unlock();
+            lock.writeLock().unlock();
         }
     }
 }

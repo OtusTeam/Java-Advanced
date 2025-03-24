@@ -1,6 +1,7 @@
 package com.otus.javaadvanced.services;
 
 import com.otus.javaadvanced.cache.Cachable;
+import io.micrometer.core.annotation.Timed;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class HashService {
     private final EncodeService encodeService;
 
     @Cachable
+    @Timed(value = "hash.time.method")
     public String hash(String data) {
         var result = data;
         for (int i = 0; i < MAX_HASH_COUNT; i++) {

@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 15s
+  scrape_timeout: 10s
+  evaluation_interval: 15s
+scrape_configs:
+  -   job_name: "hash-service"
+      metrics_path: /actuator/prometheus
+      static_configs:
+        - targets: [hash-service:8080]

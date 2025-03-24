@@ -11,6 +11,13 @@ server:
   shutdown: graceful
 
 management:
+  server:
+    port: 8080
+  info:
+    os:
+      enabled: true
+    java:
+      enabled: true
   metrics:
     enable:
       tomcat: true
@@ -20,6 +27,13 @@ management:
       system: true
       jdbc: true
       logback: true
+    distribution:
+      percentiles:
+        http.server.requests: 0.5, 0.9, 0.95, 0.99, 0.999
+      slo:
+        http.server.requests: 1ms, 10ms, 50ms
+      percentiles-histogram:
+        http.server.requests: true
   endpoint:
     loggers:
       enabled: true
@@ -41,9 +55,12 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics,prometheus,loggers
+#        include: '*'
+        include: health,info,metrics,prometheus,loggers,features
 
 logging:
   level:
     root: info
     com.otus.javaadvanced.controllers: debug
+
+auth: false

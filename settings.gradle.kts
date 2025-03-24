@@ -21,3 +21,15 @@ include("jdk-instruments")
 include("reentrant-locks")
 include("jmh")
 include("helm-kubernetes")
+
+include(":grpc:productinfo:java:server")
+include(":grpc:productinfo:java:client")
+
+include("resilience-example-load")
+include("resilience-patterns-examples")
+
+project(":resilience-example-load").projectDir = file("resilience-design-patterns/resilience-example-load")
+project(":resilience-patterns-examples").projectDir = file("resilience-design-patterns/resilience-patterns-examples")
+include("graalvm")
+include("jmeter")
+//include("virtual-threads-demo")

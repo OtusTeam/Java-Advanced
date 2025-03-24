@@ -46,41 +46,48 @@ package com.example.java17.sealedclasses;
  */
 public class SealedClassesExamples {
 
-  /**
-   * Declares an abstract superclass Shape (to support polymorphism and inheritance of state (fields) and/or behaviour
-   * (methods)). Additionally restricts the classes which can extend it by declaring itself as 'sealed' and using the
-   * 'permits' keyword to specify the list of one or more classes.
-   * <p>
-   * A sealed class such as this imposes several constraints on its permitted subclasses, including -
-   * <p>
-   * - 1) A permitted subclass must either be in the same module as the sealed class (if it has one, which is not
-   * the case in this example) or else the same package.
-   * <br>
-   * - 2) A permitted subclass must extend the sealed class (otherwise the compiler will report an error).
-   * <br>
-   * - 3) A permitted subclass must itself specify how it propagates the sealed nature of its superclass in one of
-   * the following ways a) Declare itself as final, preventing itself being extended further; b) Also declaring
-   * itself as sealed, allowing itself to be extended further but only by a further list of permitted classes; or c)
-   * Declaring itself as non-sealed, reverting to allowing itself to be further extended by any unknown class. Examples
-   * of each of these options are shown below.
-   */
-  abstract sealed class Shape permits Circle, Rectangle, Square { }
+    /**
+     * Declares an abstract superclass Shape (to support polymorphism and inheritance of state (fields) and/or behaviour
+     * (methods)). Additionally restricts the classes which can extend it by declaring itself as 'sealed' and using the
+     * 'permits' keyword to specify the list of one or more classes.
+     * <p>
+     * A sealed class such as this imposes several constraints on its permitted subclasses, including -
+     * <p>
+     * - 1) A permitted subclass must either be in the same module as the sealed class (if it has one, which is not
+     * the case in this example) or else the same package.
+     * <br>
+     * - 2) A permitted subclass must extend the sealed class (otherwise the compiler will report an error).
+     * <br>
+     * - 3) A permitted subclass must itself specify how it propagates the sealed nature of its superclass in one of
+     * the following ways a) Declare itself as final, preventing itself being extended further; b) Also declaring
+     * itself as sealed, allowing itself to be extended further but only by a further list of permitted classes; or c)
+     * Declaring itself as non-sealed, reverting to allowing itself to be further extended by any unknown class. Examples
+     * of each of these options are shown below.
+     */
+    abstract sealed class Shape permits Circle, Rectangle, Square {
+    }
 
-  // This permitted subclass declares itself as final, preventing itself being extended further.
-  final class Circle extends Shape { }
+    // This permitted subclass declares itself as final, preventing itself being extended further.
+    final class Circle extends Shape {
+    }
 
-  // This permitted subclass declares itself as sealed, allowing itself to be extended further but only by a further
-  // specified list of permitted classes.
-  sealed class Rectangle extends Shape permits TransparentRectangle, FilledRectangle { }
+    // This permitted subclass declares itself as sealed, allowing itself to be extended further but only by a further
+    // specified list of permitted classes.
+    sealed class Rectangle extends Shape permits TransparentRectangle, FilledRectangle {
+    }
 
-  // This permitted subclass declares itself as non-sealed, reverting to allowing itself to be further extended by any
-  // unknown class
-  non-sealed class Square extends Shape { }
+    // This permitted subclass declares itself as non-sealed, reverting to allowing itself to be further extended by any
+    // unknown class
+    non-sealed class Square extends Shape {
+    }
 
-  // Proves that declaring the Square class as non-sealed allows it to extended by any class, such as this one.
-  class FilledSquare extends Square {}
+    // Proves that declaring the Square class as non-sealed allows it to extended by any class, such as this one.
+    class FilledSquare extends Square {
+    }
 
-  final class TransparentRectangle extends Rectangle { }
+    final class TransparentRectangle extends Rectangle {
+    }
 
-  final class FilledRectangle extends Rectangle { }
+    final class FilledRectangle extends Rectangle {
+    }
 }

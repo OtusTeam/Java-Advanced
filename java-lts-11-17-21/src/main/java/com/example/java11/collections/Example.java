@@ -15,14 +15,14 @@ public class Example {
 
         List immutableList = List.of();
         var list = new ArrayList<String>();
-        list.stream ()
-                .map ((var s) -> s.toLowerCase ())
-                .collect (Collectors.toList ());
+        list.stream()
+                .map((var s) -> s.toLowerCase())
+                .collect(Collectors.toList());
         var foo = List.of("user", "github", "example");
 
         Map emptyImmutableMap = Map.of();
 
-
+        // new HashMap<String, String>();
         var mmp = Map.of(2017, "s1", 2018, "s2");
 
         Map<Integer, String> emptyEntryMap = Map.ofEntries(
@@ -37,7 +37,5 @@ public class Example {
         Set<String> immutableSet = Set.of();
 
         Set<String> bar = Set.of("learn", "java", "11", "17", "21");
-
     }
-
 }

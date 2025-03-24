@@ -2,13 +2,12 @@ package com.example.java21.sequncedcollections;
 
 import java.util.*;
 
-import static java.lang.StringTemplate.STR;
-
 public class SequencedCollections {
 
     public static void main(String[] args) {
-
-        List<Integer> numbers = new ArrayList<>(List.of(1,2,3,4,5,6,7,8,9));
+        SequencedSet list = new LinkedHashSet();
+        SequencedMap<String, Integer> map = new LinkedHashMap<>();
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9));
         int first = numbers.get(0);
         int last = numbers.get(numbers.size() - 1);
 
@@ -26,7 +25,6 @@ public class SequencedCollections {
 
         numbers.addFirst(0);
         numbers.addLast(10);
-
         var reverseNumbers = numbers.reversed();
         System.out.println(STR."reverseNumbers: \{reverseNumbers}"); // [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 

@@ -19,8 +19,8 @@ public class FilesProcessorNIO {
     }
 
     public static void main(String[] args) {
-        String[] inputFilePaths = {"java-nio/src/com/otus/java/advanced/input/file1.txt", "java-nio/src/com/otus/java/advanced/input/file2.txt", "java-nio/src/com/otus/java/advanced/input/file3.txt"};
-        String outputFilePath = "java-nio/src/com/otus/java/advanced/output/mergedFileNIO";
+        String[] inputFilePaths = {"/input/file1.txt", "/input/file2.txt", "/input/file3.txt"};
+        String outputFilePath = "/output/mergedFileNIO";
         mergeFilesWithNIO(inputFilePaths, outputFilePath);
     }
 }

@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Weak {
     public static void main(String[] args) throws InterruptedException {
-        example1();
+        //example1();
         example2();
     }
 
@@ -34,7 +34,7 @@ public class Weak {
             }
         }
         System.out.println("Example2:liveObjectBefore - " + liveObjectBefore);
-        //System.gc();
+        System.gc();
         int liveObjectAfter = 0;
         for (WeakReference<Object> ref : objects) {
             Object object = ref.get();

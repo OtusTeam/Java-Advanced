@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="create_accounts_table" author="Kirill Danilov">
+        <preConditions>
+            <not>
+                <tableExists tableName="accounts" />
+            </not>
+        </preConditions>
+
+        <createTable tableName="accounts" remarks="Аккаунты">
+            <column name="id" type="uuid" remarks="Уникальный идентификатор">
+                <constraints nullable="false" unique="true" primaryKey="true" primaryKeyName="accounts_pk"/>
+            </column>
+            <column name="nickname" type="VARCHAR(20)" remarks="Идентификатор заявки">
+                <constraints nullable="false"/>
+            </column>
+            <column name="users_id" type="uuid" remarks="Идентификатор пользователя">
+                <constraints foreignKeyName="fk_users_id" references="users(id)"/>
+            </column>
+            <column name="mail" type="VARCHAR(50)" remarks="Почта">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP" remarks="Дата регистрации">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="bigint" remarks="Баланс пользователя">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

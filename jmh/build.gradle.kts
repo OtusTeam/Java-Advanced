@@ -25,7 +25,7 @@ tasks.test {
 jmh {
     excludes.addAll("*")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicDefault")
-    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicShort")
+//    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicShort")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicNoFork")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicTracing")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicRecursive*")
@@ -41,6 +41,20 @@ jmh {
 //    includes.addAll("com.otus.java.advanced.map.ConcurrentHashMapEx.benchmarkConcurrentHashMapPut")
 //    includes.addAll("com.otus.java.advanced.map.HashTableEx.benchmarkHashtablePut")
 //    includes.addAll("com.otus.java.advanced.map.ConcurrentSkipListMapEx.benchmarkConcurrentSkipListMapPut")
+
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_1_NoThreadSafeCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_2_VolatileNoThreadSafeCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_3_SynchronizedCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_4_LockedCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_5_ReadWriteLockedCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_6_AtomicCounter")
+//    includes.addAll("com.otus.java.advanced.counters.*")
+
+//    includes.addAll("com.otus.java.advanced.maps.Experiment_1_HashMapShared")
+//    includes.addAll("com.otus.java.advanced.maps.Experiment_2_SynchronizedHashMapShared")
+//    includes.addAll("com.otus.java.advanced.maps.Experiment_3_LockedHashMapShared")
+//    includes.addAll("com.otus.java.advanced.maps.Experiment_4_ReadWriteLockedHashMapShared")
+    includes.addAll("com.otus.java.advanced.maps.Experiment_5_ConcurrentHashMapShared")
 
 // lesson Parameters below are for gradle DSL. So they must be converted to kotlin DSL
 //    includes = ['some regular expression'] // include pattern (regular expression) for benchmarks to be executed

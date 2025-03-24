@@ -26,4 +26,9 @@ public class Config {
     public Encoder encoder() {
         return (src) -> Base64.getEncoder().encode(src);
     }
+
+    @Bean
+    public FeatureFlags init() {
+        return new FeatureFlags();
+    }
 }

@@ -15,6 +15,10 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
 
 tasks.test {
     useJUnitPlatform()

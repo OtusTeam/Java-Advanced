@@ -12,7 +12,6 @@ public class Example {
      *
      * @param headerText Title of header.
      */
-
     private static void writeHeader(final String headerText) {
         final String headerSeparator = "=".repeat(headerText.length() + 4);
 
@@ -20,7 +19,6 @@ public class Example {
         System.out.println(headerText);
         System.out.println(headerSeparator);
     }
-
 
     /**
      * Demonstrate method {@code String.lines()} added with JDK 11.
@@ -101,12 +99,11 @@ public class Example {
         demonstrateStringStripTrailing();
         demonstrateStringIsBlank();
         lines();
-        String multilineString = "Baeldung helps \n \n developers \n explore Java.";
+        String multilineString = "Otus helps \n \n developers \n explore Java.";
         List<String> lines = multilineString.lines()
                 .filter(line -> !line.isBlank())
                 .map(String::strip)
                 .collect(Collectors.toList());
         lines.forEach(System.out::println);
     }
-
 }

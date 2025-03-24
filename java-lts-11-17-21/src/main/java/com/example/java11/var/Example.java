@@ -9,7 +9,7 @@ import java.util.List;
 public class Example {
 
     public static void main(String[] args) throws Exception {
-        var list  = new ArrayList<String>();
+        var list = new ArrayList<String>();
 
         var newList = List.of("hello", "otus");
         newList.forEach(System.out::println);
@@ -17,7 +17,7 @@ public class Example {
         String fileName = "./pom.xml";
         var i = 0;
         var str = "";
-        var path  = Paths.get(fileName);
+        var path = Paths.get(fileName);
         var bytes = Files.readAllBytes(path);
 
         System.out.println("bytes: " + bytes);
@@ -31,6 +31,5 @@ public class Example {
         } catch (Exception e) {
             // ignore
         }
-
     }
 }

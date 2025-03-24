@@ -14,10 +14,10 @@
  * <p>
  * переименовать сертификат
  * keytool -changealias -alias <alias> -destalias <new_alias> -keypass <keypass> -storepass <storepass>
- * keytool -changealias -alias cert1 -destalias cert2 -keypass pass123 -storepass stpass123 .\keytool-certs\our_keystore
+ * keytool -changealias -alias cert1 -destalias cert2 -keypass pass123 -storepass stpass123 -keystore .\keytool-certs\our_keystore
  * <p>
  * удалить сертификат
- * keytool -delete -alias cert2 -storepass stpass123 .\keytool-certs\our_keystore
+ * keytool -delete -alias cert2 -storepass stpass123 -keystore .\keytool-certs\our_keystore
  * <p>
  * <p>
  * просмотр сертификатов

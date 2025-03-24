@@ -7,7 +7,12 @@ import java.time.Duration;
 
 public class SimpleAllocate {
     // -XX:NativeMemoryTracking=summary
+    // найти идентификатор процесса jps -l
     // jcmd <pid> VM.native_memory summary
+    //
+    // отобразить по времени
+    // jcmd <pid> VM.native_memory baseline
+    // jcmd <pid> VM.native_memory summary.diff
     public static void main(String[] args) throws InterruptedException {
         String s = "My string";
         try (Arena arena = Arena.ofConfined()) {
@@ -24,6 +29,7 @@ public class SimpleAllocate {
             }
             Thread.sleep(Duration.ofMinutes(1));
 
+            // Java Heap +1953126KB
             MemorySegment allocatedMemory = arena.allocate(2000000000);
             System.out.println("allocate memory");
 

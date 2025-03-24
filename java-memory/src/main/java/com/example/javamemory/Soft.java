@@ -1,12 +1,14 @@
 package com.example.javamemory;
 
+import java.lang.ref.PhantomReference;
 import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Soft {
     public static void main(String[] args) {
-        example1();
+        //example1();
         example2();
     }
 
@@ -21,10 +23,8 @@ public class Soft {
     private static void example2() {
         List<SoftReference<Object>> objects = new ArrayList<>();
         for (int i = 0; i < 100_000_000; i++) {
-            objects.add(new SoftReference<Object>(new Object() {
-                String value = String.valueOf(System.currentTimeMillis());
-
-            }));
+            objects.add(new SoftReference<>(
+                    String.valueOf(System.currentTimeMillis())));
         }
         System.gc();
         int liveObject = 0;
