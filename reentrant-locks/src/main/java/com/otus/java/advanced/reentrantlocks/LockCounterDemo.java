@@ -44,11 +44,9 @@ public class LockCounterDemo implements Runnable {
                         );
                         System.out.println("Lock Hold Count - " + lock.getHoldCount());
                         Thread.sleep(1500);
-                    }
-                    catch (InterruptedException e) {
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
-                    }
-                    finally {
+                    } finally {
                         // Inner lock release
                         System.out.println("task name - " + name + " releasing inner lock");
 
@@ -58,19 +56,16 @@ public class LockCounterDemo implements Runnable {
                     System.out.println("task name - " + name + " work done");
 
                     done = true;
-                }
-                catch (InterruptedException e) {
+                } catch (InterruptedException e) {
                     e.printStackTrace();
-                }
-                finally {
+                } finally {
                     // Outer lock release
                     System.out.println("task name - " + name + " releasing outer lock");
 
                     lock.unlock();
                     System.out.println("Lock Hold Count - " + lock.getHoldCount());
                 }
-            }
-            else {
+            } else {
                 System.out.println("task name - " + name + " waiting for lock");
                 try {
                     Thread.sleep(1000);

@@ -20,7 +20,7 @@ public class ConditionDemo extends Thread {
     Поток, использующий условие ожидания с помощью await(),
     должен избегать передачи сигнала об этом же условии с помощью метода signal().
     Пример: четный поток использует условие четности для ожидания с помощью await(),
-    и тот же поток не должен отправлять сигнал с сигналом() условия четности.
+    и тот же поток не должен отправлять сигнал с signal() условия четности.
 
     await() и signal() аналогичны wait() и notify() в синхронизированном блоке.
      */
@@ -28,29 +28,29 @@ public class ConditionDemo extends Thread {
 
     Condition even = lock.newCondition();
     Condition odd = lock.newCondition();
-    int t;
-    ConditionDemo(int t) {
-        this.t=t;
+    int generalCounter;
+    ConditionDemo(int generalCounter) {
+        this.generalCounter = generalCounter;
     }
 
     ConditionDemo() {
-        this.t=0;
+        this.generalCounter =0;
     }
     int MAX_COUNT = 10;
     public void run() {
-        while (t <= MAX_COUNT) {
+        while (generalCounter <= MAX_COUNT) {
             lock.lock();
             try {
-                if (t % 2 == 1 && Thread.currentThread().getName().equals("even")) {
+                if (generalCounter % 2 == 1 && Thread.currentThread().getName().equals("even")) {
                     even.await();
-                } else if (t % 2 == 0 && Thread.currentThread().getName().equals("odd")) {
+                } else if (generalCounter % 2 == 0 && Thread.currentThread().getName().equals("odd")) {
                     odd.await();
                 } else {
-                    System.out.println(Thread.currentThread().getName() + " Thread " + t);
-                    t += 1;
-                    if (t % 2 == 0) {
+                    System.out.println(Thread.currentThread().getName() + " Thread " + generalCounter);
+                    generalCounter += 1;
+                    if (generalCounter % 2 == 0) {
                         even.signal();
-                    } else if (t % 2 == 1) {
+                    } else if (generalCounter % 2 == 1) {
                         odd.signal();
                     }
                 }
