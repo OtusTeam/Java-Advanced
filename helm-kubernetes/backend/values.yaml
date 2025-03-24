@@ -5,6 +5,6 @@ type: ClusterIP
 tier: backend
 replicas: 1
 image:
-  repository: iamsiberian/helm-kunernetes-backend
+  repository: iamsiberian/helm-kubernetes-backend
   tag: latest
   pullPolicy: Always
