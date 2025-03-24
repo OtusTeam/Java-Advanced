@@ -1,0 +1,34 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: helm-kubernetes-frontend
+spec:
+  selector:
+    app: helm-kubernetes-frontend
+  ports:
+  - protocol: TCP
+    port: 8081
+    nodePort: 30001
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helm-kubernetes-frontend
+spec:
+  selector:
+      matchLabels:
+        app: helm-kubernetes-frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: helm-kubernetes-frontend
+    spec:
+      containers:
+        - name: helm-kubernetes-frontend
+          image: iamsiberian/helm-kunernetes-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+

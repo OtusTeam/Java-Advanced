@@ -20,6 +20,7 @@ include("memory-dump")
 include("jdk-instruments")
 include("reentrant-locks")
 include("jmh")
+include("helm-kubernetes")
 
 include(":grpc:productinfo:java:server")
 include(":grpc:productinfo:java:client")

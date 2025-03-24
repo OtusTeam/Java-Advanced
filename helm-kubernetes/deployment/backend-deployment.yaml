@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: helm-kubernetes-backend
+spec:
+  selector:
+    app: helm-kubernetes-backend
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 8080
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helm-kubernetes-backend
+spec:
+  selector:
+      matchLabels:
+        app: helm-kubernetes-backend
+        tier: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: helm-kubernetes-backend
+        tier: backend
+    spec:
+      containers:
+        - name: helm-kubernetes-backend
+          image: iamsiberian/helm-kunernetes-backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+
