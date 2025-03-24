@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: helm-kubernetes-backend
-          image: iamsiberian/helm-kunernetes-backend:latest
+          image: iamsiberian/helm-kubernetes-backend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

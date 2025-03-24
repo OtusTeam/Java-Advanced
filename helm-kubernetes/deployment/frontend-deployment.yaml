@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: helm-kubernetes-frontend
-          image: iamsiberian/helm-kunernetes-frontend:latest
+          image: iamsiberian/helm-kubernetes-frontend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081
