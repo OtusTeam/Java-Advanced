@@ -28,13 +28,9 @@ public class Main {
     }
 
     private static void runPT() throws IOException {
-        var jmeterHome = System.getenv("JMETER_HOME");
+        var jmeterHome = "/Users/vvrudnov/tools/apache-jmeter-5.6.3";
 
-        if (jmeterHome == null) {
-            throw new RuntimeException("JMETER_HOME environment variable is not set.");
-        }
-
-        JMeterUtils.loadJMeterProperties(Strings.concat(jmeterHome, "\\bin\\jmeter.properties"));
+        JMeterUtils.loadJMeterProperties(Strings.concat(jmeterHome, "/bin/jmeter.properties"));
         JMeterUtils.setJMeterHome(jmeterHome);
         JMeterUtils.initLocale();
 
@@ -84,7 +80,7 @@ public class Main {
     private static ThreadGroup getThreadGroup() {
 
         var loopController = new LoopController();
-        loopController.setLoops(1);
+        loopController.setLoops(10);
         loopController.setFirst(true);
         loopController.setProperty(TestElement.TEST_CLASS, LoopController.class.getName());
         loopController.setProperty(TestElement.GUI_CLASS, LoopControlPanel.class.getName());

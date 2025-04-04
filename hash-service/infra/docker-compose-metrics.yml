@@ -1,7 +1,7 @@
 services:
   hash-service:
     build:
-      context: C:\Users\rudne\IdeaProjects\otus\Java-Advanced\hash-service\
+      context: /Users/vvrudnov/IdeaProjects/otus/Java-Advanced/hash-service
       dockerfile: Dockerfile
     hostname: hash-service
     container_name: hash-service
