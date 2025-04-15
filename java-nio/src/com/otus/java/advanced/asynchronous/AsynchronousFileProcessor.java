@@ -45,9 +45,8 @@ public class AsynchronousFileProcessor {
         }
 
         // Распечатать и отобразить сообщения
-        System.out.println(STR."Is the reading done? \{result.isDone()}");
-        System.out.println(
-                STR."The number of bytes read from file is \{result.get()}");
+        System.out.printf("Is the reading done? \n %s", result.isDone());
+        System.out.printf("The number of bytes read from file is %s", result.get());
 
         buffer.flip();
 
@@ -80,7 +79,7 @@ public class AsynchronousFileProcessor {
 
             // После прочтения всего текста из файла
             //    выводим количество байтов в файле
-            System.out.println(STR."     \{textRead}");
+            System.out.printf("     %s", textRead);
             textRead = br.readLine();
         }
 

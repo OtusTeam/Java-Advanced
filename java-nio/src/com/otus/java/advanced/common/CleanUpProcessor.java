@@ -10,12 +10,12 @@ public class CleanUpProcessor {
         if (file.exists()) {
             // Пытаемся удалить файл
             if (file.delete()) {
-                System.out.println(STR."Файл успешно удален: \{file.getAbsolutePath()}");
+                System.out.printf("Файл успешно удален: %s \n", file.getAbsolutePath());
             } else {
-                System.out.println(STR."Не удалось удалить файл: \{file.getAbsolutePath()}");
+                System.out.printf("Не удалось удалить файл: %s \n", file.getAbsolutePath());
             }
         } else {
-            System.out.println(STR."Файл не существует: \{file.getAbsolutePath()}");
+            System.out.printf("Файл не существует: %s", file.getAbsolutePath());
         }
     }
 }

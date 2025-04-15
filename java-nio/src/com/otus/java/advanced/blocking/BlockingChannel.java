@@ -17,7 +17,7 @@ public class BlockingChannel {
              FileChannel fileChannel = fos.getChannel()) {
 
             String data = "Hello, NIO Blocking Channel!";
-            ByteBuffer buffer = ByteBuffer.allocate(1024);
+            ByteBuffer buffer = ByteBuffer.allocate(1);
             buffer.clear();
             buffer.put(data.getBytes());
             buffer.flip(); // Переключаемся в режим чтения
@@ -27,7 +27,7 @@ public class BlockingChannel {
                 System.out.println(buffer.position());
             }
 
-            System.out.println(STR."Данные записаны в файл: \{filePath}");
+            System.out.printf("Данные записаны в файл: %s \n", filePath);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -44,12 +44,13 @@ public class BlockingChannel {
                 buffer.flip(); // Переключаемся в режим чтения
                 byte[] data = new byte[bytesRead];
                 buffer.get(data); // Получаем данные из буфера
-                System.out.println(STR."Данные, прочитанные из файла: \{new String(data)}");
+                System.out.printf("Данные, прочитанные из файла: %s \n", new String(data));
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        CleanUpProcessor.deleteFile("example.txt");
+
+        //CleanUpProcessor.deleteFile("example.txt");
     }
 }

@@ -23,17 +23,17 @@ public class ConcurrencyReadAndWriteProcessor {
         long ioStartTime = System.currentTimeMillis();
         executeIoThreads();
         long ioEndTime = System.currentTimeMillis();
-        System.out.println(STR."IO time: \{ioEndTime - ioStartTime} ms");
+        System.out.printf("IO time: %s ms \n", ioEndTime - ioStartTime);
 
         // Измеряем время выполнения NIO
         long nioStartTime = System.currentTimeMillis();
         executeNioThreads();
         long nioEndTime = System.currentTimeMillis();
-        System.out.println(STR."NIO time: \{nioEndTime - nioStartTime} ms");
+        System.out.printf("NIO time: %s ms \n", nioEndTime - nioStartTime);
         CleanUpProcessor.deleteFile(FILE_PATH);
         for(int i = 1; i <= THREAD_COUNT; i++) {
-            CleanUpProcessor.deleteFile(STR."io_output_pool-1-thread-\{String.valueOf(i)}.txt");
-            CleanUpProcessor.deleteFile(STR."nio_output_pool-2-thread-\{String.valueOf(i)}.txt");
+            CleanUpProcessor.deleteFile(String.format("io_output_pool-1-thread-%s.txt", i));
+            CleanUpProcessor.deleteFile(String.format("nio_output_pool-2-thread-%s.txt", i));
         }
     }
 
