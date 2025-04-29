@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-TARGET_JVM_PID=25468
-AGENT_ARGS=com.otus.javaadvanced.controllers.HashController#hash
+TARGET_JVM_PID=34432
+AGENT_ARGS=com.otus.java.advanced.instrumentation.application.SomeService#process
 
 BASEDIR=$(dirname "$0")
 AGENT_FILE_PATH=${BASEDIR}/../perf-agent/build/libs/perf-agent-1.0.0-SNAPSHOT.jar
