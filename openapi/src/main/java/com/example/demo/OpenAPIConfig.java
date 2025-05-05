@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @OpenAPIDefinition(
         info = @Info(
                 title = "My Demo Application",
-                version = "1.2",
+                version = "${build.version}",
                 license = @License(
                         name = "GPLv3",
                         url = "https://www.gnu.org/licenses/gpl-3.0.en.html"
