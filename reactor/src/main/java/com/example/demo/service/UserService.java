@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -24,6 +26,16 @@ public class UserService {
 
     public Flux<String> getUsersEmails() {
         return repository.getAllEmails();
+    }
+
+    public List<String> getUsersEmailsBlocking() {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        return List.of("alex@mail.ru", "anastasia@mail.ru", "gleb@mail.ru");
     }
 
     public Mono<User> update(Integer id, String name, String email) {
