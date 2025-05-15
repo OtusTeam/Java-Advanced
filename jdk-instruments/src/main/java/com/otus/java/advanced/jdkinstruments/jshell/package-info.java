@@ -6,6 +6,7 @@
  * 2*$1
  * <p>
  * String twice(String s) { return s + s; }
+ * twice("abra")
  * String twice(String s) { return "Twice:" + s + s;}
  * <p>
  * int x = 45
@@ -19,6 +20,7 @@
  * <p>
  * vol<Tab>
  * <p>
+ * /list
  * /exit
  */
 package com.otus.java.advanced.jdkinstruments.jshell;
