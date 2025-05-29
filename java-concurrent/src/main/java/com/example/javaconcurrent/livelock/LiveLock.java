@@ -2,24 +2,24 @@ package com.example.javaconcurrent.livelock;
 
 public class LiveLock {
     static class Spoon {
-        private Diner owner;
-        public Spoon(Diner d) { owner = d; }
-        public Diner getOwner() { return owner; }
-        public synchronized void setOwner(Diner d) { owner = d; }
+        private Dinner owner;
+        public Spoon(Dinner d) { owner = d; }
+        public Dinner getOwner() { return owner; }
+        public synchronized void setOwner(Dinner d) { owner = d; }
         public synchronized void use() {
             System.out.printf("%s has eaten!", owner.name);
         }
     }
 
-    static class Diner {
+    static class Dinner {
         private String name;
         private boolean isHungry;
 
-        public Diner(String n) { name = n; isHungry = true; }
+        public Dinner(String n) { name = n; isHungry = true; }
         public String getName() { return name; }
         public boolean isHungry() { return isHungry; }
 
-        public void eatWith(Spoon spoon, Diner spouse) {
+        public void eatWith(Spoon spoon, Dinner spouse) {
             while (isHungry) {
                 // Don't have the spoon, so wait patiently for spouse.
                 if (spoon.owner != this) {
@@ -49,8 +49,8 @@ public class LiveLock {
     }
 
     public static void main(String[] args) {
-        final Diner husband = new Diner("Bob");
-        final Diner wife = new Diner("Alice");
+        final Dinner husband = new Dinner("Bob");
+        final Dinner wife = new Dinner("Alice");
 
         final Spoon s = new Spoon(husband);
 
