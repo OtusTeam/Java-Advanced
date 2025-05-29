@@ -12,8 +12,7 @@ public class StringTemplates {
 
         String log = STR."\{entityName} with ID \{recordId} saved successfully.";
 
-        StringBuilder sb = new StringBuilder()
-                .append(entityName).append(" with ID ").append(recordId).append(" saved successfully.");
+        String sb = STR."\{entityName} with ID \{recordId} saved successfully.";
 
         System.out.println(log);
         System.out.println(sb);
@@ -48,15 +47,15 @@ public class StringTemplates {
         // The FMT template processor
         // The format specifiers are the same as those defined in java.util.Formatter
         record CartItem(String name, double price, int quantity) {
-            double subTotal(){
+            double subTotal() {
                 return price * quantity;
             }
         }
 
-        CartItem[] cartItems = new CartItem[] {
-          new CartItem("Coffee", 3.45, 3),
-          new CartItem("Latte", 5.20, 1),
-          new CartItem("Cappuccino", 4.60, 2),
+        CartItem[] cartItems = new CartItem[]{
+                new CartItem("Coffee", 3.45, 3),
+                new CartItem("Latte", 5.20, 1),
+                new CartItem("Cappuccino", 4.60, 2),
         };
 
         String receipt = FMT."""
@@ -77,7 +76,6 @@ public class StringTemplates {
         String processed = STR.process(st);
 
         System.out.println(processed);
-
 
     }
 }
