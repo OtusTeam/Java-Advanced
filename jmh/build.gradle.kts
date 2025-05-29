@@ -23,9 +23,9 @@ tasks.test {
 
 // lesson These parameters overrides parameters from annotations
 jmh {
-    excludes.addAll("*")
+    //excludes.addAll("*")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicDefault")
-//    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicShort")
+    //includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicShort")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicNoFork")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicTracing")
 //    includes.addAll("com.otus.java.advanced.FibonacciBenchmarks.fibClassicRecursive*")
@@ -36,6 +36,26 @@ jmh {
 //    includes.addAll("com.otus.java.advanced.DeadCodeElimination")
 
 //    includes.addAll("com.otus.java.advanced.ConstantFolding")
+
+    //includes.addAll("com.otus.java.advanced.map.ConcurrentHashMapEx")
+    //includes.addAll("com.otus.java.advanced.map.HashTableEx")
+    //includes.addAll("com.otus.java.advanced.map.ConcurrentSkipListMapEx")
+    //includes.addAll("com.otus.java.advanced.synchronizers.benchmarktesting.ExchangerBenchmark")
+    includes.addAll("com.otus.java.advanced.synchronizers.benchmarktesting.SemaphoreBenchmark")
+
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_1_NoThreadSafeCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_2_VolatileNoThreadSafeCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_3_SynchronizedCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_4_LockedCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_5_ReadWriteLockedCounter")
+//    includes.addAll("com.otus.java.advanced.counters.Experiment_6_AtomicCounter")
+//    includes.addAll("com.otus.java.advanced.counters.*")
+
+//    includes.addAll("com.otus.java.advanced.maps.Experiment_1_HashMapShared")
+//    includes.addAll("com.otus.java.advanced.maps.Experiment_2_SynchronizedHashMapShared")
+//    includes.addAll("com.otus.java.advanced.maps.Experiment_3_LockedHashMapShared")
+//    includes.addAll("com.otus.java.advanced.maps.Experiment_4_ReadWriteLockedHashMapShared")
+    //includes.addAll("com.otus.java.advanced.maps.Experiment_5_ConcurrentHashMapShared")
 
 // lesson Parameters below are for gradle DSL. So they must be converted to kotlin DSL
 //    includes = ['some regular expression'] // include pattern (regular expression) for benchmarks to be executed
@@ -74,4 +94,11 @@ jmh {
 //    jmhVersion = '1.37' // Specifies JMH version
 //    includeTests = true // Allows to include test sources into generate JMH jar, i.e. use it when benchmarks depend on the test classes.
 //    duplicateClassesStrategy = DuplicatesStrategy.FAIL // Strategy to apply when encountring duplicate classes during creation of the fat jar (i.e. while executing jmhJar task)
+}
+
+if (hasProperty("buildScan")) {
+    extensions.findByName("buildScan")?.withGroovyBuilder {
+        setProperty("termsOfServiceUrl", "https://gradle.com/terms-of-service")
+        setProperty("termsOfServiceAgree", "no")
+    }
 }
