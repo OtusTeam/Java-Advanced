@@ -4,7 +4,7 @@ import java.util.concurrent.CyclicBarrier;
 
 
 public class CyclicBarrierEx {
-        private static final CyclicBarrier BARRIER = new CyclicBarrier(10, new Game());
+        private static final CyclicBarrier BARRIER = new CyclicBarrier(3, new Game()); //  действие после сбора 10 игроков.
         //Инициализируем барьер на три потока и таском, который будет выполняться, когда
         //у барьера соберется три потока. После этого, они будут освобождены.
 

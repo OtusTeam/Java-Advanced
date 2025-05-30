@@ -30,6 +30,7 @@ public class LiveLock {
 
                 // If spouse is hungry, insist upon passing the spoon.
                 if (spouse.isHungry()) {
+//                if (spouse.isHungry() && Math.random() < 0.5) {
                     System.out.printf(
                             "%s: You eat first my darling %s!%n",
                             name, spouse.getName());

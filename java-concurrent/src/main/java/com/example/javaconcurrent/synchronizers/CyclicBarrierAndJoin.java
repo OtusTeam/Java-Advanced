@@ -10,7 +10,7 @@ public class CyclicBarrierAndJoin {
         Runnable task = () -> {
             System.out.println(Thread.currentThread().getName() + " начал выполнение задачи.");
             try {
-                barrier.await(); // Поток ожидает другие потоки
+                barrier.await(); // Поток ожидает другие потоки, блокирует каждый поток до сбора всех участников.
             } catch (Exception e) {
                 e.printStackTrace();
             }

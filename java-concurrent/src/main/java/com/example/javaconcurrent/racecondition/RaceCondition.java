@@ -5,11 +5,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 class Counter implements Runnable
 {
     private AtomicInteger c = new AtomicInteger(0);
+//    private Integer c = 0;
     public void increment()
     {
         try
         {
-            Thread.sleep(10);
+            Thread.sleep(10); // если убрать гонка будет сложнее обнаружима
         }
         catch (InterruptedException e)
         {
@@ -17,14 +18,17 @@ class Counter implements Runnable
             e.printStackTrace();
         }
         c.incrementAndGet();
+//        c++;
     }
     public void decrement()
     {
         c.decrementAndGet();
+//        c--;
     }
     public int getValue()
     {
         return c.get();
+//        return c;
     }
     @Override
     public void run()
