@@ -88,7 +88,10 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<generatorName>spring</generatorName>
+<!--							<generatorName>spring</generatorName>-->
+<!--							<library>spring-mvc</library>-->
+							<generatorName>java</generatorName>
+							<library>resttemplate</library>
 							<inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
 							<output>${project.build.directory}/generated-sources</output>
 							<apiPackage>com.api</apiPackage>
@@ -102,7 +105,6 @@
 								<artifactVersion>${project.version}</artifactVersion>
 								<delegatePattern>true</delegatePattern>
 								<sourceFolder>swagger</sourceFolder>
-								<library>spring-mvc</library>
 								<interfaceOnly>true</interfaceOnly>
 								<useBeanValidation>true</useBeanValidation>
 								<dateLibrary>java17</dateLibrary>
