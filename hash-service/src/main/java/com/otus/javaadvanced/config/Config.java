@@ -18,13 +18,8 @@ public class Config {
     }
 
     @Bean
-    public EncodeService encodeService(Encoder encoder) {
-        return new EncodeService(encoder);
-    }
-
-    @Bean
-    public Encoder encoder() {
-        return (src) -> Base64.getEncoder().encode(src);
+    public EncodeService encodeService() {
+        return new EncodeService();
     }
 
     @Bean

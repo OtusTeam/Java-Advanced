@@ -8,10 +8,10 @@ import java.util.Base64;
 @RequiredArgsConstructor
 public class EncodeService {
 
-    private final Encoder encoder;
+    private Encoder encoder;
 
     // for emulation of large stacks
-    private static final int STACK_DEPTH = 0;
+    private static final int STACK_DEPTH = 100;
 
     public byte[] encode(byte[] hash) {
         byte[] safe = Arrays.copyOf(hash, hash.length);
