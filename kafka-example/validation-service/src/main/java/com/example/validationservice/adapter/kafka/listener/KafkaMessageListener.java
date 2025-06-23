@@ -23,6 +23,10 @@ public class KafkaMessageListener {
 
     @KafkaListener(topics = REGISTRATION_USER_REQUEST)
     public void receiveMessage(@Payload String message) {
+        if (message == null || message.trim().isEmpty()) {
+            log.error("Received empty Kafka message, skipping.");
+            return;
+        }
         UserDto userDto;
         try {
             userDto = objectMapper.readValue(message, UserDto.class);

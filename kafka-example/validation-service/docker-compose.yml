@@ -8,7 +8,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - C:\work\volumes\postgres:/var/lib/postgresql/data
+      - ./volumes/postgres:/var/lib/postgresql/data
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
