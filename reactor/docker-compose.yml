@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: demo-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: test
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - demo-net
+
+  app:
+    build: .
+    container_name: demo-app
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_R2DBC_URL: r2dbc:postgresql://postgres:5432/test
+      SPRING_R2DBC_USERNAME: postgres
+      SPRING_R2DBC_PASSWORD: 123
+    networks:
+      - demo-net
+
+volumes:
+  pgdata:
+
+networks:
+  demo-net:
