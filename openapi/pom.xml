@@ -54,6 +54,13 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.0.2</version>
 		</dependency>
+
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-codegen-maven-plugin</artifactId>
+			<version>2.4.18</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -69,6 +76,44 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.openapitools</groupId>
+				<artifactId>openapi-generator-maven-plugin</artifactId>
+				<version>3.3.4</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+<!--							<generatorName>spring</generatorName>-->
+<!--							<library>spring-mvc</library>-->
+							<generatorName>java</generatorName>
+							<library>resttemplate</library>
+							<inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
+							<output>${project.build.directory}/generated-sources</output>
+							<apiPackage>com.api</apiPackage>
+							<modelPackage>com.model</modelPackage>
+							<supportingFilesToGenerate>
+								ApiUtil.java
+							</supportingFilesToGenerate>
+							<configOptions>
+								<groupId>${project.groupId}</groupId>
+								<artifactId>${project.artifactId}</artifactId>
+								<artifactVersion>${project.version}</artifactVersion>
+								<delegatePattern>true</delegatePattern>
+								<sourceFolder>swagger</sourceFolder>
+								<interfaceOnly>true</interfaceOnly>
+								<useBeanValidation>true</useBeanValidation>
+								<dateLibrary>java17</dateLibrary>
+								<java17>true</java17>
+							</configOptions>
+							<ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

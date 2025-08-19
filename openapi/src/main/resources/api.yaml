@@ -1,0 +1,86 @@
+openapi: 3.0.1
+info:
+  title: My Demo Application
+  license:
+    name: GPLv3
+    url: https://www.gnu.org/licenses/gpl-3.0.en.html
+  version: "1.2"
+servers:
+- url: http://test.internal.net
+  description: Test deployment
+- url: http://api.production.com
+  description: Production deployment
+- url: http://localhost:8080
+  description: Localhost
+tags:
+- name: Hello API
+  description: It just saying hello!
+paths:
+  /user:
+    get:
+      tags:
+      - Hello API
+      operationId: getUser
+      parameters:
+      - name: userId
+        in: query
+        description: ID of the user
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MyDTO"
+  /user-email:
+    get:
+      tags:
+      - Hello API
+      operationId: getUserEmail
+      parameters:
+      - name: userId
+        in: query
+        description: ID of the user
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /hello:
+    get:
+      tags:
+      - Hello API
+      summary: Hello message provider
+      description: Saying hello and only that
+      operationId: hello
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+components:
+  schemas:
+    MyDTO:
+      type: object
+      properties:
+        age:
+          maximum: 150
+          minimum: 18
+          type: integer
+          description: An age
+          format: int32
+        email:
+          type: string
+          description: User email
+          example: mail@example.com
+      description: My DTO
