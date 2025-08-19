@@ -2,6 +2,7 @@ package ecommerce;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.StatusRuntimeException;
 
 import java.util.logging.Logger;
 
@@ -33,6 +34,19 @@ public class ProductInfoClient {
 
         ProductInfoOuterClass.Product product = stub.getProduct(productID);
         logger.info("Product: " + product.toString());
+
+        String errorId = "abrakadabra";
+        try {
+            ProductInfoOuterClass.Product errorResult = stub.getProduct(
+                    ProductInfoOuterClass.ProductID
+                            .newBuilder()
+                            .setValue(errorId)
+                            .build()
+            );
+        } catch (StatusRuntimeException e) {
+            logger.warning("Product with id: " + errorId + ", not found");
+        }
+
         channel.shutdown();
     }
 }
