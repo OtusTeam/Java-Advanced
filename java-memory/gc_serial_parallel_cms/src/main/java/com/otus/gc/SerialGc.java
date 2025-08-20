@@ -5,8 +5,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class SerialGc {
-
+    //-Xms1g -Xmx1g -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+HeapDumpOnOutOfMemoryError -Xlog:gc*::time
     //-XX:+UseSerialGC -Xms526m -Xmx526m -XX:SurvivorRatio=1 -Xlog:gc*::time
+    //-XX:+UseZGC -Xms4g -Xmx4g -XX:SurvivorRatio=1 -Xlog:gc*::time
+    //-XX:+UseParallelGC -Xms526m -Xmx526m -Xlog:gc*::time
     public static void main(String[] args) throws InterruptedException {
         Map<String, String> stringContainer = new HashMap<>();
         System.out.println("Start of program!");
