@@ -5,7 +5,7 @@ package com.otus.java.advanced.jdkinstruments.javadoc;
  * <p>
  * Please see the {@link java.lang.Object} class for true identity
  * @author java user
- * use javadoc -d javadoc-output .\src\main\java\com\otus\java\advanced\jdkinstruments\javadoc\* -tag city:a:"Notable city is:"
+ * javadoc -d javadoc-output ./src/main/java/com/otus/java/advanced/jdkinstruments/javadoc/* -tag city:a:"Notable city is:"
  */
 public class Javadoc {
 
