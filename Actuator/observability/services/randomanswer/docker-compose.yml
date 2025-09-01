@@ -1,0 +1,10 @@
+version: '4'
+
+services:
+  random-response-service:
+    image: randomanswer
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8091:8091"

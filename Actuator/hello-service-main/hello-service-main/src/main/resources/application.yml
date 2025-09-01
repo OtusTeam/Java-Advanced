@@ -1,0 +1,45 @@
+spring:
+  application:
+    name:  hello-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  otlp:
+    metrics:
+      export:
+        url: http://localhost:4318/v1/metrics
+        step: 10s
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
+  tracing:
+    sampling:
+      probability: 1.0
+  metrics:
+    distribution:
+      percentiles:
+        do.sleep.method.timed: 0.99, 0.95, 0.9, 0.7, 0.5
+        http.server.requests: 0.99, 0.95, 0.9, 0.7, 0.5
+      percentiles-histogram:
+        do.sleep.method.timed: true
+        http.server.requests: true
+      minimum-expected-value:
+        do.sleep.method.timed: 100ms
+        http.server.requests: 100ms
+      maximum-expected-value:
+        do.sleep.method.timed: 10s
+        http.server.requests: 10s
+      slo:
+        do.sleep.method.timed: 300ms,500ms,1s,2s
+        http.server.requests: 300ms,500ms,1s,2s
+
+
+#    tags:
+#      department: ${SERVICE_DEPARTMENT:software}
+#      team: ${SERVICE_TEAM:greeting}
+#      service: ${spring.application.name}
+#      env: ${SERVICE_ENV:dev}
+#      region: ${SERVICE_REGION:europe-west1}
+#      instance.id: ${SERVICE_INSTANCE_ID:dasdasdsadasd}
