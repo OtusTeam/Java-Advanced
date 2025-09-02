@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring-boot-observability" />
+        <module name="observability-demo" />
+        <module name="fraud-detection-service" />
+        <module name="loan-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="fraud-detection-service" options="-parameters" />
+      <module name="loan-service" options="-parameters" />
+      <module name="observability-demo" options="-parameters" />
+      <module name="spring-boot-observability" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,70 @@
+server:
+  port: 8082
+spring:
+#  application:
+#    name: App actuator
+#  security:
+#    user:
+#      name: act
+#      password: act
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8090"
+  datasource:
+    url: jdbc:postgresql://localhost:5532/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    baseline-on-migrate: true
+    clean-disabled: true
+#
+config:
+#  customConditional:
+#    enabled: true
+  mail:
+    hostname: host@mail.com
+#    port: 9000
+info:
+  app:
+    name: "Spring Boot 3 + Actuator"
+    version: "1.0.0"
+    description: "Spring boot actuator"
+#
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true #включить пробы
+      show-details: always  #отображать детальную информацию и здоровье
+  health:
+    db:
+      enabled: false   # Включает проверку здоровья базы данных
+  info: #каждое свойство можно вкл/выкл отдельно (build, env, git, java, os, process, ssl)
+    env:
+      enabled: true
+    os:
+      enabled: true
+    build:
+      enabled: true
+    git:
+      enabled: true
+      mode: "full"
+    process:
+      enabled: true
+    java:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+

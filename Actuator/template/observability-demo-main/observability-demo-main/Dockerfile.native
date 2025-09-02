@@ -1,0 +1,38 @@
+FROM bellsoft/alpaquita-linux-base as builder-image
+
+ENV NIK_HOME=/opt/bellsoft/liberica-vm-core-22.3.0-openjdk17
+ENV PATH=$NIK_HOME/bin:$PATH
+
+WORKDIR /opt/temp
+
+RUN apk update && \
+    apk add --no-cache bash g++ make zlib-static && \
+    wget https://download.bell-sw.com/java/17.0.5+8/bellsoft-jdk17.0.5+8-linux-x64-musl-lite.apk && \
+    wget https://download.bell-sw.com/vm/22.3.0/bellsoft-liberica-vm-core-openjdk17.0.5+8-22.3.0+2-linux-x64-musl.apk && \
+    apk add --allow-untrusted --no-cache  \
+        ./bellsoft-jdk17.0.5+8-linux-x64-musl-lite.apk  \
+        ./bellsoft-liberica-vm-core-openjdk17.0.5+8-22.3.0+2-linux-x64-musl.apk && \
+    rm -R *
+
+FROM builder-image as builder
+
+WORKDIR /app
+
+COPY .mvn/ .mvn/
+COPY mvnw .
+COPY pom.xml .
+
+RUN chmod +x mvnw  && \
+    ./mvnw -ntp dependency:go-offline
+
+COPY src/ src/
+
+RUN ./mvnw -Pnative -DskipTests native:compile
+
+FROM bellsoft/alpaquita-linux-base
+
+RUN apk add --no-cache freetype-dev
+
+COPY --from=builder /app/target/observability-demo .
+
+ENTRYPOINT ["./observability-demo"]
