@@ -3,7 +3,7 @@ package com.otus.java.advanced.jdkinstruments.javac;
 import java.util.ArrayList;
 import java.util.List;
 
-// javac -d javac-target -verbose -Xlint:rawtypes,unchecked .\src\main\java\com\otus\java\advanced\jdkinstruments\javac\XLint.java
+// javac -d javac-target -verbose -Xlint:rawtypes,unchecked ./src/main/java/com/otus/java/advanced/jdkinstruments/javac/XLint.java
 // javac @javac-args/xlint-options
 public class XLint {
 
