@@ -2,18 +2,12 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.CreateUserRq;
 import com.example.demo.dto.User;
-import com.example.demo.dto.EmailDto;
 import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
-
-import java.time.Duration;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,25 +15,9 @@ import java.util.List;
 public class UserController {
     final UserService service;
 
-    @PostMapping("/user/create")
+    @PostMapping("/user")
     public Mono<User> create(@RequestBody CreateUserRq createUserRq) {
         return service.create(createUserRq.getName(), createUserRq.getEmail());
-    }
-
-    @GetMapping(value = "/users-emails")
-//    @GetMapping(value = "/users-emails", produces = MediaType.APPLICATION_NDJSON_VALUE)
-//    @GetMapping(value = "/users-emails", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-//    public Flux<String> getUsersEmails() {
-    public Flux<EmailDto> getUsersEmails() {
-        log.info("getting emails");
-//        return service.getUsersEmails();
-        return service.getUsersEmails().map(EmailDto::new);
-
-    }
-
-    @GetMapping("/sync/users-emails")
-    public List<String> getEmailsBlocking() {
-        return service.getUsersEmailsBlocking();
     }
 
     @GetMapping("/user/{id}")
@@ -62,10 +40,5 @@ public class UserController {
     @DeleteMapping("/user/{id}")
     public Mono<User> delete(@PathVariable Integer id) {
         return service.delete(id);
-    }
-
-    @GetMapping("/users-email-provider-ids")
-    public Flux<Integer> getEmailProviderIds() {
-        return service.getUsersEmailProviders();
     }
 }

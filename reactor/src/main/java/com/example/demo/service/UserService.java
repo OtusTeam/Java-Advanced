@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.debug.EmailProviderDto;
+import com.example.demo.dto.EmailProviderDto;
 import com.example.demo.dto.User;
 import com.example.demo.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,11 +12,15 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 import java.util.function.Function;
 
-import static com.example.demo.debug.DebugReactiveApp.emailProviders;
-
 @Service
 @RequiredArgsConstructor
 public class UserService {
+    public static final EmailProviderDto[] emailProviders = new EmailProviderDto[]{
+            new EmailProviderDto(1, "mail.ru"),
+            new EmailProviderDto(2, "yandex.ru"),
+            new EmailProviderDto(3, "gmail.com")
+    };
+
     private final UserRepository repository;
     private final ApplicationEventPublisher publisher;
 
@@ -42,7 +46,7 @@ public class UserService {
         return List.of("alex@mail.ru", "anastasia@mail.ru", "gleb@mail.ru");
     }
 
-    public Flux<Integer> getUsersEmailProviders() {
+    public Flux<Integer> getUsersEmailProviderIds() {
         return getUsersEmails()
                 .doOnSubscribe(s -> System.out.println("🔥 Подписка на getUsersEmails()"))
                 .doOnNext(email -> System.out.println("📩 Получен email: " + email))

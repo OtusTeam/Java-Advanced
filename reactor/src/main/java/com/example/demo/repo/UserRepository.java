@@ -9,6 +9,6 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface UserRepository extends ReactiveCrudRepository<User, Integer> {
 
-    @Query(value = "SELECT u.name FROM app_user u")
+    @Query(value = "SELECT u.email FROM app_user u")
     Flux<String> getAllEmails();
 }
