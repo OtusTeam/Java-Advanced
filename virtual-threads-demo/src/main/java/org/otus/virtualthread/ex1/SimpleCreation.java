@@ -20,7 +20,7 @@ public class SimpleCreation {
     }
 
     private static void sample2() throws InterruptedException {
-        Thread.Builder.OfVirtual ofVirtual = Thread.ofVirtual();
+        Thread.Builder ofVirtual = Thread.ofVirtual();
         ofVirtual.name("otus-virtual-thread");
         Thread thread = ofVirtual.unstarted(
                 () -> System.out.println(format("S2: Hello from virtual thread! IsVirtual={0}, name={1}",
@@ -32,10 +32,10 @@ public class SimpleCreation {
     }
 
     private static void sample3() throws InterruptedException {
-        Thread.Builder.OfPlatform ofPlatform = Thread.ofPlatform();
+        Thread.Builder ofPlatform = Thread.ofPlatform();
         ofPlatform.name("otus-platform-thread");
         Thread thread = ofPlatform.start(
-                () -> System.out.println(format("S2: Hello from platform thread! IsVirtual={0}, name={1}",
+                () -> System.out.println(format("S3: Hello from platform thread! IsVirtual={0}, name={1}",
                         Thread.currentThread().isVirtual(),
                         Thread.currentThread().getName()))
         );
@@ -46,7 +46,7 @@ public class SimpleCreation {
         Thread.Builder builder = Thread.ofVirtual().name("worker-", 0);
 
         Runnable task =
-                () -> System.out.println(format("Thread: ID={0}, name={1}, isVirtual={2}, toString={3}",
+                () -> System.out.println(format("S4: Thread: ID={0}, name={1}, isVirtual={2}, toString={3}",
                         Thread.currentThread().threadId(),
                         Thread.currentThread().getName(),
                         Thread.currentThread().isVirtual(),
@@ -55,11 +55,11 @@ public class SimpleCreation {
         // name "worker-0"
         Thread t1 = builder.start(task);
         t1.join();
-        System.out.println(format("{0} terminated", t1.getName()));
+        System.out.println(format("S4: {0} terminated", t1.getName()));
 
         // name "worker-1"
         Thread t2 = builder.start(task);
         t2.join();
-        System.out.println(format("{0} terminated", t2.getName()));
+        System.out.println(format("S4: {0} terminated", t2.getName()));
     }
 }
