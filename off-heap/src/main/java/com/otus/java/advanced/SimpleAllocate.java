@@ -20,7 +20,6 @@ public class SimpleAllocate {
             // Allocate off-heap memory
             MemorySegment nativeText = arena.allocateUtf8String(s);
 
-
             // Access off-heap memory
             for (int i = 0; i < s.length(); i++ ) {
                 System.out.print(
@@ -31,7 +30,9 @@ public class SimpleAllocate {
 
             // Java Heap +1953126KB
             MemorySegment allocatedMemory = arena.allocate(2000000000);
-            System.out.println("allocate memory");
+            System.out.println();
+            System.out.println("allocated memory");
+
 
             Thread.sleep(Duration.ofMinutes(5));
         } // Off-heap memory is deallocated
