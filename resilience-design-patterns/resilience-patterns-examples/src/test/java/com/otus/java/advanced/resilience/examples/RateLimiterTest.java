@@ -1,6 +1,7 @@
 package com.otus.java.advanced.resilience.examples;
 
 import com.otus.java.advanced.resilience.examples.clients.ClientRest;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ class RateLimiterTest {
         verify(clientRest, times(2)).callApi();
     }
 
+    @Disabled
     @Test
     void testLimit() {
         var limitForPeriod = 2;

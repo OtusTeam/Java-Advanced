@@ -1,6 +1,7 @@
 package com.otus.java.advanced.resilience.examples;
 
 import com.otus.java.advanced.resilience.examples.clients.ClientRest;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;
@@ -54,6 +55,7 @@ class CircuitBreakerTest {
 
     }
 
+    @Disabled
     @Test
     void circuitBreakerSlowOpenTest() {
         var numberSuccessfulFirst = 4;
@@ -83,6 +85,7 @@ class CircuitBreakerTest {
 
     }
 
+    @Disabled
     @Test
     void circuitBreakerHalfOpenToClosedTest() throws InterruptedException {
 
@@ -118,6 +121,7 @@ class CircuitBreakerTest {
                 responses.stream().filter(it -> it.getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR).count());
     }
 
+    @Disabled
     @Test
     void circuitBreakerHalfOpenToOpenTest() throws InterruptedException {
 

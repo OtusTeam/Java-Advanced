@@ -12,8 +12,11 @@ build/
 .idea/compiler.xml
 .idea/gradle.xml
 .idea/libraries/
+.idea
 *.iws
 *.iml
+misc.xml
+hotswap_agent.xml
 *.ipr
 out/
 !**/src/main/**/out/
