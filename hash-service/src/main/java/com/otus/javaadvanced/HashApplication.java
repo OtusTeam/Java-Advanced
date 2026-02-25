@@ -11,17 +11,19 @@ import org.springframework.context.event.ContextRefreshedEvent;
 @SpringBootApplication
 @Slf4j
 @EnableAspectJAutoProxy
-public class HashApplication implements ApplicationListener<ApplicationStartedEvent> {
+public class HashApplication /*implements ApplicationListener<ApplicationStartedEvent>*/ {
 
     public static void main(String[] args) {
         SpringApplication.run(HashApplication.class, args);
     }
 
     //region lesson CDS & ProjectLeyden
+/*
     @Override
     public void onApplicationEvent(ApplicationStartedEvent event) {
         log.info("Application started. Exiting...");
         Runtime.getRuntime().halt(-777);
     }
+*/
     //endregion
 }
