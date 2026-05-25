@@ -9,10 +9,17 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
+    private static final Map<String, Integer> EMAIL_PROVIDER_IDS = Map.of(
+            "mail.ru", 1,
+            "yandex.ru", 2,
+            "gmail.com", 3
+    );
+
     private final UserRepository repository;
     private final ApplicationEventPublisher publisher;
 
@@ -28,6 +35,14 @@ public class UserService {
         return repository.getAllEmails();
     }
 
+    public Flux<Integer> getUsersEmailProviderIds() {
+        return repository.findAll()
+                .map(User::getEmail)
+                .map(email -> email.substring(email.indexOf('@') + 1))
+                .distinct()
+                .flatMap(domain -> Mono.justOrEmpty(EMAIL_PROVIDER_IDS.get(domain)));
+    }
+
     public List<String> getUsersEmailsBlocking() {
         try {
             Thread.sleep(100);
@@ -36,6 +51,10 @@ public class UserService {
         }
 
         return List.of("alex@mail.ru", "anastasia@mail.ru", "gleb@mail.ru");
+    }
+
+    public List<Integer> getUsersEmailProviderIdsBlocking() {
+        return List.of(1, 2, 3);
     }
 
     public Mono<User> update(Integer id, String name, String email) {

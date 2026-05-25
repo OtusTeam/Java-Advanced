@@ -21,7 +21,7 @@ import java.util.List;
 public class UserController {
     final UserService service;
 
-    @PostMapping("/user/create")
+    @PostMapping("/user")
     public Mono<User> create(@RequestBody CreateUserRq createUserRq) {
         return service.create(createUserRq.getName(), createUserRq.getEmail());
     }
@@ -40,6 +40,26 @@ public class UserController {
     @GetMapping("/sync/users-emails")
     public List<String> getEmailsBlocking() {
         return service.getUsersEmailsBlocking();
+    }
+
+    @GetMapping("/sync/users-emails-v2")
+    public List<String> getEmailsBlockingV2() {
+        return service.getUsersEmailsBlocking();
+    }
+
+    @GetMapping("/emails/ids")
+    public Flux<Integer> getEmailProviderIds() {
+        return service.getUsersEmailProviderIds();
+    }
+
+    @GetMapping("/sync/emails/ids")
+    public List<Integer> getEmailProviderIdsBlocking() {
+        return service.getUsersEmailProviderIdsBlocking();
+    }
+
+    @GetMapping("/broken")
+    public Mono<String> broken() {
+        return Mono.just("ok");
     }
 
     @GetMapping("/user/{id}")

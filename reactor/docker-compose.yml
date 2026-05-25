@@ -8,3 +8,5 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123
       POSTGRES_DB: test
+    volumes:
+      - ./postgres-init:/docker-entrypoint-initdb.d
