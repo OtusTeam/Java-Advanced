@@ -14,8 +14,8 @@ import org.springframework.data.relational.core.mapping.Table;
 public class User {
     @Id
     private Integer id;
-    @Column("email")
-    private String email;
     @Column("name")
     private String name;
+    @Column("email")
+    private String email;
 }

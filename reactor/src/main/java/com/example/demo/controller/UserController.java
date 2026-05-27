@@ -21,25 +21,9 @@ import java.util.List;
 public class UserController {
     final UserService service;
 
-    @PostMapping("/user/create")
+    @PostMapping("/user")
     public Mono<User> create(@RequestBody CreateUserRq createUserRq) {
         return service.create(createUserRq.getName(), createUserRq.getEmail());
-    }
-
-    @GetMapping(value = "/users-emails")
-//    @GetMapping(value = "/users-emails", produces = MediaType.APPLICATION_NDJSON_VALUE)
-//    @GetMapping(value = "/users-emails", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-//    public Flux<String> getUsersEmails() {
-    public Flux<EmailDto> getUsersEmails() {
-        log.info("getting emails");
-//        return service.getUsersEmails();
-        return service.getUsersEmails().map(EmailDto::new);
-
-    }
-
-    @GetMapping("/sync/users-emails")
-    public List<String> getEmailsBlocking() {
-        return service.getUsersEmailsBlocking();
     }
 
     @GetMapping("/user/{id}")
@@ -62,10 +46,5 @@ public class UserController {
     @DeleteMapping("/user/{id}")
     public Mono<User> delete(@PathVariable Integer id) {
         return service.delete(id);
-    }
-
-    @GetMapping("/users-email-provider-ids")
-    public Flux<Integer> getEmailProviderIds() {
-        return service.getUsersEmailProviders();
     }
 }
