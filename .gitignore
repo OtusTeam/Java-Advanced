@@ -1,17 +1,16 @@
+### Gradle ###
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
 !**/src/main/**/build/
 !**/src/test/**/build/
-*.log
-*.log.*
+
+### Maven ###
+target/
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/gradle.xml
-.idea/libraries/
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -43,4 +42,9 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-/.idea/.name
+
+### Logs & misc ###
+*.log
+*.log.*
+output.txt
+outputs/
