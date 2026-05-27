@@ -26,6 +26,22 @@ public class UserController {
         return service.create(createUserRq.getName(), createUserRq.getEmail());
     }
 
+    @GetMapping(value = "/users-emails")
+//    @GetMapping(value = "/users-emails", produces = MediaType.APPLICATION_NDJSON_VALUE)
+//    @GetMapping(value = "/users-emails", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<String> getUsersEmails() {
+//    public Flux<EmailDto> getUsersEmails() {
+        log.info("getting emails");
+        return service.getUsersEmails();
+//        return service.getUsersEmails().map(EmailDto::new);
+
+    }
+
+    @GetMapping("/sync/users-emails")
+    public List<String> getEmailsBlocking() {
+        return service.getUsersEmailsBlocking();
+    }
+
     @GetMapping("/user/{id}")
     public Mono<User> getById(@PathVariable Integer id) {
         return service.get(id);

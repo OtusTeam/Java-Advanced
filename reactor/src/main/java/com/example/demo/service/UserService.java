@@ -48,38 +48,34 @@ public class UserService {
 
     public Flux<Integer> getUsersEmailProviderIds() {
         return getUsersEmails()
-                .doOnSubscribe(s -> System.out.println("🔥 Подписка на getUsersEmails()"))
-                .doOnNext(email -> System.out.println("📩 Получен email: " + email))
-//                .filter(email -> {
-//                    boolean valid = email != null && email.contains("@");
-//                    if (!valid) {
-//                        System.err.println("⚠️ Невалидный email: " + email);
-//                    }
-//                    return valid;
-//                })
-                .map(email -> {
-                    String domain = email.split("@")[1];
-                    System.out.println("🌐 Выделен домен: " + domain);
-                    return domain;
+//                .doOnSubscribe(s -> System.out.println("🔥 Подписка на getUsersEmails()"))
+//                .doOnNext(email -> System.out.println("📩 Получен email: " + email))
+                .filter(email -> {
+                    boolean valid = email != null && email.contains("@");
+                    if (!valid) {
+                        System.err.println("⚠️ Невалидный email: " + email);
+                    }
+                    return valid;
                 })
+                .map(email -> email.split("@")[1])
                 .groupBy(Function.identity())
-                .checkpoint("📍 После groupBy — сгруппировали по домену")
+//                .checkpoint("📍 После groupBy — сгруппировали по домену")
                 .flatMap(group -> group
-                        .reduce((a, b) -> a) // берём один email из группы
-                        .doOnNext(e -> System.out.println("✅ Из группы '" + group.key() + "' взят email: " + e))
+                        .reduce((a, b) -> a)
+//                        .doOnNext(e -> System.out.println("✅ Из группы '" + group.key() + "' взят email: " + e))
                         .map(email -> group.key())
                 )
-                .doOnNext(domain -> System.out.println("🔍 Мапим домен в провайдера: " + domain))
+//                .doOnNext(domain -> System.out.println("🔍 Мапим домен в провайдера: " + domain))
                 .flatMap(domain -> getByUrl(domain)
-                        .doOnNext(p -> System.out.println("🎯 Провайдер найден: " + p.getFqdn() + " → ID " + p.getId()))
-                        .doOnError(e -> System.err.println("💥 Ошибка при поиске провайдера: " + e.getMessage()))
+//                        .doOnNext(p -> System.out.println("🎯 Провайдер найден: " + p.getFqdn() + " → ID " + p.getId()))
+//                        .doOnError(e -> System.err.println("💥 Ошибка при поиске провайдера: " + e.getMessage()))
                         .map(EmailProviderDto::getId)
-                )
-                .doOnNext(id -> System.out.println("📦 ID провайдера: " + id))
-                .doOnError(e -> System.err.println("❌ Общая ошибка: " + e.getMessage()))
-                .doOnComplete(() -> System.out.println("✅ Выполнение завершено"))
-                .checkpoint("🏁 Конец getUsersEmailProviders")
-                .log("🚨 LOG (getUsersEmailProviders)");
+                );
+//                .doOnNext(id -> System.out.println("📦 ID провайдера: " + id))
+//                .doOnError(e -> System.err.println("❌ Общая ошибка: " + e.getMessage()))
+//                .doOnComplete(() -> System.out.println("✅ Выполнение завершено"))
+//                .checkpoint("🏁 Конец getUsersEmailProviders")
+//                .log("🚨 LOG (getUsersEmailProviders)");
     }
 
     private Mono<EmailProviderDto> getByUrl(String url) {
